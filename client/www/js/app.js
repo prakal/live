@@ -23,34 +23,13 @@ angular.module('liveApp', ['ionic'])
 
     $stateProvider.state('home', {
       url: '/',
-      templateUrl: './views/home.html'               //Need to consider location of views
+      templateUrl: './views/home.html',
+      controller: 'homeCtrl'
     })
 
     $stateProvider.state('artistCreate', {
       url: '/create',
-      templateUrl: './views/artistCreate.html'           //Needs to be added to views
+      templateUrl: './views/artistCreate.html'
     })
 
-})
-
-
-
-
-
-
-
-  // $routeProvider
-  // .when('/', {
-  //   templateUrl: './views/home.html',
-  //   controller: 'HomeCtrl'
-  // })
-
-  // .when('/create', {
-  //   templateUrl: './views/home.html',
-  //   controller: 'HomeCtrl'
-  // })
-
-  // .otherwise({
-  //   redirectTo: '/'
-  // })
-
+});
