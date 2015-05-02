@@ -1,28 +1,29 @@
 {
-  "name": "Live",
+  "name": "live",
   "version": "0.0.1",
-  "description": "Live using express",
-  "main": "server.js",
-  "repository": "",
-  "license": "Proprietary",
-  "private": true,
+  "description": "Live app!",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenfieldproject-live/2015-03-greenfield.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/greenfieldproject-live/2015-03-greenfield/issues"
+  },
+  "homepage": "https://github.com/greenfieldproject-live/2015-03-greenfield#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "bluebird": "1.0.8",
     "body-parser": "^1.5.2",
-    
-    "chai": "^1.9.0",
-    "ejs": "~0.8.5",
-    "express": "^4.0.0",
-    
-    "express-session": "^1.7.2",
-    "forever": "^0.10.11",
-    
-    "mocha": "^1.17.1",
-    "mysql": "^2.6.2",
-    "nodemon": "^1.3.7",
     "request": "^2.34.0",
-    
+    "express": "^4.0.0",
+    "express-session": "^1.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.3.7"
   }
 }
