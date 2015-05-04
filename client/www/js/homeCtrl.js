@@ -1,6 +1,5 @@
 function homeCtrl($scope, $http){
 
-
   $scope.getAllArtists = function(){
     return $http({
       method: 'GET',
@@ -8,7 +7,7 @@ function homeCtrl($scope, $http){
     })
     .then(function(resp){
       $scope.artists = resp.data;
-      console.log('artists in client:', resp.data);
+      console.log('artists in client:', $scope.artists);
     })
   };
 

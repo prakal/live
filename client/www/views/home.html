@@ -1,12 +1,12 @@
 <ion-view title="home">
   <ion-content padding="true">
     <ion-list>
-      <ion-item ng-repeat="artist in artists" class="item">
+      <ion-item ng-repeat="artist in artists | filter: query " class="item">
         <img src={{artist.artistPic}} style="width: 100px" />
         <div>{{artist.artistName}}</div>
         <div>{{artist.genre}}</div>
         <div>{{artist.avgRating}}</div>
       </ion-item>
     </ion-list>
-  </ion-content>
+  </ion-content>s
 </ion-view>
