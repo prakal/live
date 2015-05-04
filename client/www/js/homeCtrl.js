@@ -14,8 +14,6 @@ function homeCtrl($scope, $http){
 
   $scope.getAllArtists();
 
-
-
   // $scope.bands = [
   //   {
   //     name: 'Blink 182',
