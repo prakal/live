@@ -1,10 +1,11 @@
 <ion-view title="home">
   <ion-content padding="true">
     <ion-list>
-      <ion-item ng-repeat="band in bands" class="item">
-        <div>{{band.name}}</div>
-        <div>{{band.venue}}</div>
-        <div>{{band.rating}}</div>
+      <ion-item ng-repeat="artist in artists" class="item">
+        <img src={{artist.artistPic}} style="width: 100px" />
+        <div>{{artist.artistName}}</div>
+        <div>{{artist.genre}}</div>
+        <div>{{artist.avgRating}}</div>
       </ion-item>
     </ion-list>
   </ion-content>
