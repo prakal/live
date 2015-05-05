@@ -27,6 +27,13 @@ app.get('/art', function(req, res){
   });
 });
 
+app.get('/artist', function(req, res){
+  Artists.find({
+    where: {artistName: req.query.artistName}})
+  .then(function (artist) {
+    res.status(200).json(artist);
+  });
+});
 
 app.post('/newartist', function(req, res) {
 
@@ -36,15 +43,12 @@ app.post('/newartist', function(req, res) {
     .build( req.body )
     .save()
     .then(function(anotherTask) {
-      console.log("This is me.");
+      console.log(anotherTask);
     }).catch(function(error) {
       console.log('error: ', error);
     })
   console.log('request: ', req.body);
 });
-
-
-
 
 app.post('/newreview', function(req, res) {
 
