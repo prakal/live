@@ -1,0 +1,18 @@
+<ion-view title="home">
+  <ion-content padding="false" class="artistContainer">
+    
+    <img ng-src="{{artist.artistPic}}">
+    <h1>{{artist.artistName}}</h1>
+    <h2>{{artist.genre}}</h2>
+    <div class="reviews">
+      <span class="avgRating">{{artist.avgRating}}</span>
+      <rating ng-model="artist.avgRating" max="max"></rating>
+      <span class="numOfReviews">12 reviews</span>
+    </div>
+
+    <button ng-click="writeReview()" class="button button-block button-positive">
+      Write a Review!
+    </button>
+
+  </ion-content>
+</ion-view>

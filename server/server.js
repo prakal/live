@@ -27,6 +27,23 @@ app.get('/art', function(req, res){
   });
 });
 
+app.get('/artist', function(req, res){
+  Artists.find({
+    where: {artistName: req.query.artistName}})
+  .then(function (artist) {
+    res.status(200).json(artist);
+  });
+});
+
+
+// Project.find({
+//   where: {title: 'aProject'},
+//   attributes: ['id', ['name', 'title']]
+// }).then(function(project) {
+//   // project will be the first entry of the Projects table with the title 'aProject' || null
+//   // project.title will contain the name of the project
+// })
+
 
 app.post('/newartist', function(req, res) {
 

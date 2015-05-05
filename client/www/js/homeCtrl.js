@@ -1,4 +1,4 @@
-function homeCtrl($scope, $http, liveFactory){
+function homeCtrl($scope, $http, $location, liveFactory){
   
    $scope.getAllArtists = function(){
     return $http({
@@ -11,11 +11,17 @@ function homeCtrl($scope, $http, liveFactory){
     })
   };
 
+  $scope.artistPagefromHome = function(path){
+    console.log("shit");
+    $location.path('/artist/' + path);
+  }
+
+  $scope.max = 5;
+
   $scope.getAllArtists();
 
   $scope.getNewArtist = liveFactory.getNewArtist;
-
 }
 
 angular.module('liveApp')
-.controller('homeCtrl', ['$scope', '$http', 'liveFactory', homeCtrl]);
+.controller('homeCtrl', ['$scope', '$http', '$location', 'liveFactory', homeCtrl]);

@@ -14,6 +14,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-rating/ionic-rating.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -25,6 +26,7 @@
     <script src="js/mainCtrl.js"></script>
     <script src="js/newArtistCtrl.js"></script>
     <script src="js/searchResultsCtrl.js"></script>
+    <script src="js/artistPageCtrl.js"></script>
 
   </head>
   <body ng-app="liveApp" ng-controller="mainCtrl">
@@ -33,7 +35,7 @@
 
       <!-- APP HEADER -->
       <ion-header-bar align-title="left" class="bar-dark bar-header mainHeader">
-        <h1 class="title" ng-click="goHome()">Live</h1>
+        <div class="title" ng-click="goHome()"></div>
         <button class="button button-icon icon ion-navicon"></button>
       </ion-header-bar>
       

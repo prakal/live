@@ -3,16 +3,23 @@
     <ion-list>
     <div class="list">
       
-      <a ng-repeat="artist in filteredArtists = (artists | filter: q)" class="item item-thumbnail-left">
+      <ion-item ng-repeat="artist in filteredArtists = (artists | filter: q)" class="item item-thumbnail-left" ng-click="artistPagefromHome(artist.artistName)">
           <img ng-src="{{artist.artistPic}}">
-          <h2><b>{{artist.artistName}}</b></h2>
-          <h3>{{artist.genre}}</h3>
-          <h3>{{artist.avgRating}}</h3>
-      </a>  
+          <h1>{{artist.artistName}}</h1>
+          <h2>{{artist.genre}}</h2>
+          <div class="reviews">
+            <span class="avgRating">{{artist.avgRating}}</span>
+            <rating ng-model="artist.avgRating" max="max"></rating>
+            <span class="numOfReviews">12 reviews</span>
+          </div>
+      </ion-item>  
       
      </div> 
-      <div ng-show="!filteredArtists.length">
-        Sorry, {{ q }} is not in our catalogue. <span ng-click="getNewArtist()">Click here</span> to create the {{ q }} artist page.
+      <div ng-show="!filteredArtists.length" class="noResults">
+        Sorry, <span class="query">{{ q }}</span> is not in our catalogue.<br>
+        <button ng-click="getNewArtist()" class="button button-block button-positive">
+          Create <span class="query">{{ q }}</span>'s artist page now!
+        </button>
       </div>
     </ion-list>
   </ion-content>
