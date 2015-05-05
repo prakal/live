@@ -1,4 +1,4 @@
-function homeCtrl($scope, $http){
+function homeCtrl($scope, $http, liveFactory){
 
   $scope.getAllArtists = function(){
     return $http({
@@ -13,50 +13,9 @@ function homeCtrl($scope, $http){
 
   $scope.getAllArtists();
 
-  // $scope.bands = [
-  //   {
-  //     name: 'Blink 182',
-  //     venue: 'Slims',
-  //     rating: 4
-  //   },
-  //   {
-  //     name: 'Katy Perry',
-  //     venue: 'Bill Graham Auditorium',
-  //     rating: 1
-  //   },
-  //   {
-  //     name: 'Blink 182',
-  //     venue: 'Slims',
-  //     rating: 4
-  //   },
-  //   {
-  //     name: 'Katy Perry',
-  //     venue: 'Bill Graham Auditorium',
-  //     rating: 1
-  //   },
-  //   {
-  //     name: 'Blink 182',
-  //     venue: 'Slims',
-  //     rating: 4
-  //   },
-  //   {
-  //     name: 'Katy Perry',
-  //     venue: 'Bill Graham Auditorium',
-  //     rating: 1
-  //   },
-  //    {
-  //     name: 'Blink 182',
-  //     venue: 'Slims',
-  //     rating: 4
-  //   },
-  //   {
-  //     name: 'Katy Perry',
-  //     venue: 'Bill Graham Auditorium',
-  //     rating: 1
-  //   }
-  // ];
+  $scope.getNewArtist = liveFactory.getNewArtist;
 
 }
 
 angular.module('liveApp')
-.controller('homeCtrl', ['$scope', '$http', homeCtrl]);
+.controller('homeCtrl', ['$scope', '$http', 'liveFactory', homeCtrl]);
