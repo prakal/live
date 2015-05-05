@@ -39,6 +39,13 @@ angular.module('liveApp', ['ionic'])
       templateUrl: './views/searchResults.html',
       controller: 'searchResultsCtrl'
     })
+    
+    //Route for review creation.
+    $stateProvider.state('newReview', {
+      url: '/newreview',
+      templateUrl: './views/reviewCreate.html',
+      controller: 'reviewCreateCtrl'
+    })
 
 });
 
