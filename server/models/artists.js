@@ -36,6 +36,78 @@ Artist.sync({force: true}).then(function () {
     genre: 'Hard Rock',
     avgRating: 4
   });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'Blink 182',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'KISS',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'Lil Wayne',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'Shit Band',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'Diana Ross',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'Nelly',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'Amy Winehouse',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'Sum 41',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
+})
+.then(function () {
+  return Artist.create({
+    artistName: 'The Strokes',
+    artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
+    genre: 'Hard Rock',
+    avgRating: 4
+  });
 });
 
 module.exports = Artist;
