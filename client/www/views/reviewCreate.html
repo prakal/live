@@ -1,0 +1,24 @@
+<ion-view title="reviewCreate">
+  <ion-content padding="true">
+  <h1>New Review</h1>
+  
+    <form ng-submit="postReview()">
+      <div class="list">
+        <label class="item item-input">
+          <input ng-model="review.username" type="text" placeholder="What's your name?" required>
+        </label>
+        <label class="item item-input">
+          <input ng-model="review.rating" type="number" placeholder="How well did they perform from 1-5?" required>
+        </label>
+        <label class="item item-input">
+          <input ng-model="review.venue" type="text" placeholder="Where did they play?">
+        </label>
+        <label class="item item-input">
+          <textarea ng-model="review.review" placeholder="How'd they do?"></textarea>
+        </label>
+        <button type="submit" class="button button-full button-balanced">Submit!</button>
+      </div>
+    </form>
+
+  </ion-content>
+</ion-view>

@@ -36,7 +36,25 @@ app.post('/newartist', function(req, res) {
     .build( req.body )
     .save()
     .then(function(anotherTask) {
-      console.log(anotherTask);
+      console.log("This is me.");
+    }).catch(function(error) {
+      console.log('error: ', error);
+    })
+  console.log('request: ', req.body);
+});
+
+
+
+
+app.post('/newreview', function(req, res) {
+
+  console.log('THIS IS A NEW REVIEW!');
+
+  Reviews
+    .build( req.body )
+    .save()
+    .then(function(anotherTask) {
+      console.log("This is me.");
     }).catch(function(error) {
       console.log('error: ', error);
     })
