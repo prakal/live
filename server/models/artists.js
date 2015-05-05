@@ -16,7 +16,7 @@ var Artist = db.define('artist', {
   },
   artistPic: Sequelize.STRING,
   genre: Sequelize.STRING,
-  summary: Sequelize.TEXT,
+  bio: Sequelize.TEXT,
   avgRating: Sequelize.INTEGER
 });
 

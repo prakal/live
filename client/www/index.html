@@ -20,26 +20,34 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/liveFactory.js"></script>
     <script src="js/homeCtrl.js"></script>
+    <script src="js/mainCtrl.js"></script>
+    <script src="js/newArtistCtrl.js"></script>
+    <script src="js/searchResultsCtrl.js"></script>
 
   </head>
-  <body ng-app="liveApp">
+  <body ng-app="liveApp" ng-controller="mainCtrl">
 
     <ion-pane>
-      <!-- <div class="bar bar-header"> -->
+
+      <!-- APP HEADER -->
       <ion-header-bar class="bar-dark bar-header mainHeader">
-        <h1 class="title">Live</h1>
+        <h1 class="title" ng-click="goHome()">Live</h1>
       </ion-header-bar>
       <ion-header-bar class="bar-dark bar-subheader item-input-inset">
         <label class="item-input-wrapper search-artist">
               <i class="icon ion-ios-search placeholder-icon"></i>
-              <input class="search" type="search" placeholder="Search">
+              <form ng-submit="artistsSearch()">
+                <input class="search" type="search" placeholder="Search" ng-model="query">
+              </form>
         </label>
       </ion-header-bar>
 
+      <!-- TEMPLATES -->
       <ion-nav-view></ion-nav-view>
+      
     </ion-pane>
-
 
   </body>
 </html>

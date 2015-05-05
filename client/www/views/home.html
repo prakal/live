@@ -1,12 +1,15 @@
 <ion-view title="home">
   <ion-content padding="true">
     <ion-list>
-      <ion-item ng-repeat="artist in artists" class="item">
+      <ion-item ng-repeat="artist in filteredArtists = (artists | filter: q)" class="item">
         <img src={{artist.artistPic}} style="width: 100px" />
         <div>{{artist.artistName}}</div>
         <div>{{artist.genre}}</div>
         <div>{{artist.avgRating}}</div>
       </ion-item>
+      <div ng-show="!filteredArtists.length">
+        Sorry, {{ q }} is not in our catalogue. <span ng-click="getNewArtist()">Click here</span> to create the {{ q }} artist page.
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>

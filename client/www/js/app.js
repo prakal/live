@@ -27,9 +27,18 @@ angular.module('liveApp', ['ionic'])
       controller: 'homeCtrl'
     })
 
-    $stateProvider.state('artistCreate', {
-      url: '/create',
-      templateUrl: './views/artistCreate.html'
+    $stateProvider.state('newArtist', {
+      url: '/newartist',
+      templateUrl: './views/newArtist.html',
+      controller: 'newArtistCtrl'
+    })
+
+    // Search results from calling Spotify API to create a new artist
+    $stateProvider.state('searchResults', {
+      url: '/results',
+      templateUrl: './views/searchResults.html',
+      controller: 'searchResultsCtrl'
     })
 
 });
+
