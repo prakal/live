@@ -1,11 +1,27 @@
-function newArtistCtrl($scope, $http){
+function newArtistCtrl($scope, $http, liveFactory){
+ 
+  var chosenArtist = liveFactory.chosenArtist;
+ 
   $scope.artist = {
-    name: "Drake",
-    picture: "http://www.billboard.com/files/media/drake-cover-990.jpg",
-    genre: "Hip-hop",
-    bio: "Canadian Jewish Rapper"
+    artistName: chosenArtist.name,
+    artistPic: chosenArtist.images[2].url,
+    genre: chosenArtist.genres[0]
+    // bio: ,
   }
+
+  $scope.saveArtist = function (){
+    console.log('test', liveFactory.chosenArtist);
+    return $http({
+      method: 'POST',
+      url: '/newartist',
+      data: $scope.artist
+    })
+    .then(function (resp) {
+      console.log('response data:', resp.data);
+      return resp.data;
+    });
+  };
 }
 
 angular.module('liveApp')
-.controller('newArtistCtrl', ['$scope', '$http', newArtistCtrl]);
+.controller('newArtistCtrl', ['$scope', '$http', 'liveFactory', newArtistCtrl]);

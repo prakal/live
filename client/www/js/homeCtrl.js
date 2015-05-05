@@ -1,6 +1,6 @@
 function homeCtrl($scope, $http, liveFactory){
-
-  $scope.getAllArtists = function(){
+  
+   $scope.getAllArtists = function(){
     return $http({
       method: 'GET',
       url: '/art'

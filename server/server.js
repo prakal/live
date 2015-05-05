@@ -26,3 +26,19 @@ app.get('/art', function(req, res){
     res.status(200).json(artists);
   });
 });
+
+
+app.post('/newartist', function(req, res) {
+
+  console.log('new artist coming');
+
+  Artists
+    .build( req.body )
+    .save()
+    .then(function(anotherTask) {
+      console.log(anotherTask);
+    }).catch(function(error) {
+      console.log('error: ', error);
+    })
+  console.log('request: ', req.body);
+});

@@ -1,20 +1,21 @@
 <ion-view title="newArtist">
   <ion-content padding="true">
-  <h1>New Artist: {{ artist.name }}</h1>
-  <img src="{{artist.picture}}" style="width:100px" />
-  <div class="list">
-    <label class="item item-input">
-      <input ng-model="artist.picture" type="text" placeholder="Image Url...">
-    </label>
-    <label class="item item-input">
-      <input ng-model="artist.genre" type="text" placeholder="Artist Genre...">
-    </label>
-    <label class="item item-input">
-      <textarea ng-model="artist.bio" placeholder="Artist Bio..."></textarea>
-    </label>
-  </div>
+  <h1>New Artist: {{ artist.artistName }}</h1>
+  <img src="{{ artist.artistPic }}" style="width:100px" />
+    <form ng-submit="saveArtist()">
+      <div class="list">
+        <label class="item item-input">
+          <input ng-model="artist.artistPic" type="text" placeholder="Image Url...">
+        </label>
+        <label class="item item-input">
+          <input ng-model="artist.genre" type="text" placeholder="Artist Genre...">
+        </label>
+        <label class="item item-input">
+          <textarea ng-model="artist.bio" placeholder="Artist Bio..."></textarea>
+        </label>
+        <button type="submit" class="button button-calm" >Submit!</button>
+      </div>
+    </form>
 
-  <button class="button button-calm" ng-click="">Submit!</button>
-
-  <ion-content>
-<ion-view>
+  </ion-content>
+</ion-view>
