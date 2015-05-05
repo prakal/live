@@ -20,7 +20,6 @@ var Artist = db.define('artist', {
   avgRating: Sequelize.INTEGER
 });
 
-
 Artist.sync({force: true}).then(function () {
   return Artist.create({
     artistName: 'U2',
