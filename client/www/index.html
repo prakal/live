@@ -32,9 +32,12 @@
     <ion-pane>
 
       <!-- APP HEADER -->
-      <ion-header-bar class="bar-dark bar-header mainHeader">
+      <ion-header-bar align-title="left" class="bar-dark bar-header mainHeader">
         <h1 class="title" ng-click="goHome()">Live</h1>
+        <button class="button button-icon icon ion-navicon"></button>
       </ion-header-bar>
+      
+      <!-- SEARCH SUB-HEADER -->
       <ion-header-bar class="bar-dark bar-subheader item-input-inset">
         <label class="item-input-wrapper search-artist">
               <i class="icon ion-ios-search placeholder-icon"></i>
@@ -45,7 +48,7 @@
       </ion-header-bar>
 
       <!-- TEMPLATES -->
-      <ion-nav-view></ion-nav-view>
+      <ion-nav-view class="has-header has-subheader"></ion-nav-view>
       
     </ion-pane>
 
