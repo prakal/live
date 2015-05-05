@@ -33,7 +33,7 @@ Artist.sync({force: true}).then(function () {
     artistName: 'Metallica',
     artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
     genre: 'Hard Rock',
-    avgRating: 4
+    avgRating: 3
   });
 })
 .then(function () {
@@ -49,7 +49,7 @@ Artist.sync({force: true}).then(function () {
     artistName: 'KISS',
     artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
     genre: 'Hard Rock',
-    avgRating: 4
+    avgRating: 2
   });
 })
 .then(function () {
@@ -57,7 +57,7 @@ Artist.sync({force: true}).then(function () {
     artistName: 'Lil Wayne',
     artistPic: 'https://i.scdn.co/image/15d9ccb37a96d49f69f44f999fb1e9e46f9b3ccd',
     genre: 'Hard Rock',
-    avgRating: 4
+    avgRating: 1
   });
 })
 .then(function () {
