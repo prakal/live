@@ -24,6 +24,7 @@ var Review = db.define('review', {
 Review.sync({force: true}).then(function () {
   // Table created
   return Review.create({
+    username:"THIS IS MY NAME",
     rating: 1,
     venue: 'Madison Square Gardasdasdasden, NYC',
     textReview: 'I really ldsadasdasoved seeing U2 in concert! They are incredible!!!'

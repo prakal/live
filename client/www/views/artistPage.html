@@ -1,4 +1,4 @@
-<ion-view title="home">
+v<ion-view title="home">
   <ion-content padding="false" class="artistContainer">
     
     <img ng-src="{{artist.artistPic}}">
@@ -13,6 +13,16 @@
     <button ng-click="writeReview()" class="button button-block button-positive">
       Write a Review!
     </button>
+
+    <ion-list>
+      <ion-item ng-repeat="review in reviews" class="review">
+          <div>{{review.username}}</div>
+          <div>{{review.rating}}</div>
+          <div>{{review.venue}}</div>
+          <div>{{review.textReview}}</div>
+      </ion-item>
+     
+    </ion-list>
 
   </ion-content>
 </ion-view>
