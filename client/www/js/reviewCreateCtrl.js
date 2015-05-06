@@ -1,13 +1,19 @@
-function reviewCreateCtrl($scope, $http, $location){
- 
+function reviewCreateCtrl($scope, $http, $location,liveFactory){
+  
   $scope.review = {}
 
+  $scope.review.artistName = liveFactory.artistNameReview
   var review = $scope.review
 
+  $scope.back = function(){
+    window.history.back();
+  }
+
   $scope.postReview = function (){
-    
-    $location.path('/');
-    
+    console.log("post review works")
+    console.log("this",liveFactory.artistNameReview)
+    $scope.back();
+    console.log($scope.review)
     return $http({
       method: 'POST',
       url: '/newreview',
@@ -19,8 +25,9 @@ function reviewCreateCtrl($scope, $http, $location){
     });
 
     review = {};
+    liveFactory.artistNameReview = "";
   };
 }
 
 angular.module('liveApp')
-.controller('reviewCreateCtrl', ['$scope', '$http', '$location', reviewCreateCtrl]);
+.controller('reviewCreateCtrl', ['$scope', '$http', '$location','liveFactory', reviewCreateCtrl]);

@@ -1,6 +1,6 @@
 var db = require('../config');
 var Sequelize = require('sequelize');
-// var User = require('./user');
+var reviews = require('./reviews.js');
 
 var Artist = db.define('artist', {
   tableName: 'artists',
@@ -19,6 +19,8 @@ var Artist = db.define('artist', {
   bio: Sequelize.TEXT,
   avgRating: Sequelize.INTEGER
 });
+
+// Artist.hasMany(reviews)
 
 Artist.sync({force: true}).then(function () {
   return Artist.create({

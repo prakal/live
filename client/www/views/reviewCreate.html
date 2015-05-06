@@ -1,5 +1,5 @@
 <ion-view title="reviewCreate">
-  <ion-content padding="true">
+  <!-- <ion-content padding="true"> -->
   <h1>New Review</h1>
   
     <form ng-submit="postReview()">
@@ -14,11 +14,24 @@
           <input ng-model="review.venue" type="text" placeholder="Where did they play?">
         </label>
         <label class="item item-input">
-          <textarea ng-model="review.review" placeholder="How'd they do?"></textarea>
+          <textarea ng-model="review.textReview" placeholder="How'd they do?"></textarea>
         </label>
         <button type="submit" class="button button-full button-balanced">Submit!</button>
       </div>
     </form>
+    
+    <button ng-click="postReview()">post</button>
+    <button ng-click="back()">back button</button>
 
-  </ion-content>
+  <!-- </ion-content> -->
 </ion-view>
+<!-- 
+  timestamps: true,
+  review_id: { 
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  venue: Sequelize.STRING,
+  rating: Sequelize.INTEGER,
+  textReview: Sequelize.TEXT -->

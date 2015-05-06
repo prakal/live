@@ -23,6 +23,7 @@ app.listen(app.get('port'), function() {
 app.get('/art', function(req, res){
   Artists.findAll({})
   .then(function (artists) {
+    // console.log("This is all of the artists",artists)
     res.status(200).json(artists);
   });
 });
@@ -35,6 +36,19 @@ app.get('/artist', function(req, res){
   });
 });
 
+app.get('/getreviews', function(req, res){
+  Reviews.findAll({})
+  .then(function (review) {
+    console.log("These are the reviews",review)
+    res.status(200).json(review);
+  });
+});
+      // method: 'GET',
+      // url: '/getreviews'
+
+
+
+
 app.post('/newartist', function(req, res) {
 
   console.log('new artist coming');
@@ -42,25 +56,29 @@ app.post('/newartist', function(req, res) {
   Artists
     .build( req.body )
     .save()
-    .then(function(anotherTask) {
-      console.log(anotherTask);
-    }).catch(function(error) {
+    .then(function(body) {
+      res.status(201).send(body);
+      }).catch(function(error) {
       console.log('error: ', error);
-    })
+      })
   console.log('request: ', req.body);
 });
+
+
 
 app.post('/newreview', function(req, res) {
 
   console.log('THIS IS A NEW REVIEW!');
 
+
   Reviews
     .build( req.body )
     .save()
-    .then(function(anotherTask) {
-      console.log("This is me.");
-    }).catch(function(error) {
+    .then(function(body) {
+      console.log(body)
+      res.status(201).send(body);
+      }).catch(function(error) {
       console.log('error: ', error);
-    })
+      })
   console.log('request: ', req.body);
 });
