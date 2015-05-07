@@ -1,20 +1,40 @@
 <ion-view title="newArtist">
-  <ion-content padding="true">
-  <h1>New Artist: {{ artist.artistName }}</h1>
-  <img src="{{ artist.artistPic }}" style="width:100px" />
-    <form ng-submit="saveArtist()">
-      <div class="list">
-        <label class="item item-input">
-          <input ng-model="artist.artistPic" type="text" placeholder="Image Url...">
-        </label>
-        <label class="item item-input">
-          <input ng-model="artist.genre" type="text" placeholder="Artist Genre...">
-        </label>
-        <label class="item item-input">
-          <textarea ng-model="artist.bio" placeholder="Artist Bio..."></textarea>
-        </label>
-        <button type="submit" class="button button-calm" >Submit!</button>
+  <ion-content padding="false">
+
+    <div class="pageTitle strong">
+      New Artist
+    </div>
+
+    <div class="newArtistHeader">
+      <img src="{{ artist.artistPic }}">
+      <h1>{{ artist.artistName }}</h1>
+    </div>
+    
+    <div class="changePic" ng-click="showURL = !showURL">
+      Change Image
+    </div>
+
+    <form ng-submit="saveArtist()" class="newArtistForm">
+      
+      <label class="item-input item-stacked-label" ng-show="showURL">
+        <span class="input-label strong">Image URL</span>
+        <input ng-model="artist.artistPic" type="text" placeholder="Add image URL...">
+      </label>
+      
+      <label class="item-input item-stacked-label">
+        <span class="input-label strong">Genre</span>
+        <input ng-model="artist.genre" type="text" placeholder="Enter artist's genre...">
+      </label>
+      
+      <label class="item-input item-stacked-label">
+        <span class="input-label strong">Artist Bio</span>
+        <textarea ng-model="artist.bio" placeholder="Artist bio..."></textarea>
+      </label>
+      
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive" >Submit</button>
       </div>
+    
     </form>
 
   </ion-content>

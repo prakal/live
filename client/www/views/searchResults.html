@@ -1,14 +1,20 @@
 <ion-view title="searchResults">
-  <ion-content padding="true">
-  <h1>Search Results Page</h1>
-  <p>Which {{ item.name }} did you mean?</p>
-    <ion-list>
-      <ion-item ng-repeat="item in searchResults" class="item" ng-click="pickArtist(item)">
-        <img src={{item.images[2].url}} style="width: 100px" />
-        <div>{{item.name}}</div>
-        <div>{{item.genres[0]}}</div>
-      </ion-item>
-     
+  <ion-content padding="false">
+
+    <div class="pageTitle">
+      {{ searchResults.length }} results for <span class="strong">{{ searchQuery }}</span>
+    </div>
+  
+    <ion-list class="artistList">
+      <ion-item ng-repeat="item in searchResults" class="item item-thumbnail-left" ng-click="pickArtist(item)">
+        <img src={{item.images[2].url}} ng-show="item.images[2].url">
+        <div class="fallback" ng-show="!item.images[2].url">
+          <img src="./assets/singer.png" />
+        </div>
+        <h1>{{item.name}}</h1>
+        <h2>{{item.genres[0]}}</h2>
+      </ion-item>  
     </ion-list>
+  
   </ion-content>
 </ion-view>

@@ -1,8 +1,10 @@
 function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
   
   $scope.artistName = $stateParams.artistName;
+
   var artistName = $scope.artistName
-  console.log($scope.artistName);
+
+  $scope.max = 5;
 
   $scope.getArtist = function(){
     return $http({
@@ -10,38 +12,46 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
       url: '/artist',
       params: {artistName: $scope.artistName}
     })
-    .then(function(resp){
-
+    .then(function(resp){  
       $scope.artist = resp.data;
-      console.log('artist for page:', $scope.artist);
+      console.log('This Artist info:', $scope.artist)
     })
   };
 
-  $scope.getArtist();
-
+  $scope.getReviews = function(){
+    return $http({
+      method: 'GET',
+      url: '/getreviews',
+      params: {artistName: $scope.artistName}
+    })
+    .then(function(resp){
+      $scope.reviews = resp.data.rows;
+      $scope.reviewsCount = resp.data.count;
+      console.log('number of reviews', $scope.numReviews);
+    })
+  };
+  
   $scope.writeReview = function(){
     $location.path('/newreview');
     liveFactory.artistNameReview = artistName
-    console.log("This the answer",liveFactory.artistNameReview)
   }
 
-  $scope.getReviews = function(){
-    console.log('getReviews is invoked')
-    return $http({
-      method: 'GET',
-      url: '/getreviews'
-      // params: {artistName: $scope.artistName}
-    })
-    .then(function(resp){
-      console.log("SET OF REVIEWS",resp.data)
-      $scope.reviews = resp.data
-      
-      
-    })
+  $scope.toggle = function() {
+    $scope.hideText = !$scope.hideText;
   };
 
-  $scope.getReviews();
+  $scope.oneReview = function() {
+    if($scope.reviewsCount === 1){
+      return true;
+    }
+  }
 
+  $scope.$on('$ionicView.enter', function(){
+    $scope.hideText = true;
+    $scope.getArtist();
+    $scope.getReviews();
+  });
+  
 }
 
 angular.module('liveApp')

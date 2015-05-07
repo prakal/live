@@ -2,6 +2,8 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
  
   var chosenArtist = liveFactory.chosenArtist;
  
+  $scope.showURL = false;
+
   $scope.artist = {
     artistName: chosenArtist.name,
     artistPic: chosenArtist.images[2].url,
@@ -10,7 +12,6 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
   }
 
   $scope.saveArtist = function (){
-    console.log('test', liveFactory.chosenArtist);
     return $http({
       method: 'POST',
       url: '/newartist',
@@ -25,5 +26,3 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
 
 angular.module('liveApp')
 .controller('newArtistCtrl', ['$scope', '$http', '$location', 'liveFactory', newArtistCtrl]);
-
-

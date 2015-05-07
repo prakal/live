@@ -30,55 +30,41 @@ app.get('/art', function(req, res){
 
 app.get('/artist', function(req, res){
   Artists.find({
-    where: {artistName: req.query.artistName}})
+    where: { artistName: req.query.artistName }
+  })
   .then(function (artist) {
     res.status(200).json(artist);
   });
 });
 
 app.get('/getreviews', function(req, res){
-  Reviews.findAll({})
+  Reviews.findAndCountAll({
+    where: { artistName: req.query.artistName }
+  })
   .then(function (review) {
     console.log("These are the reviews",review)
     res.status(200).json(review);
   });
 });
-      // method: 'GET',
-      // url: '/getreviews'
-
-
-
 
 app.post('/newartist', function(req, res) {
-
-  console.log('new artist coming');
-
   Artists
     .build( req.body )
     .save()
     .then(function(body) {
       res.status(201).send(body);
-      }).catch(function(error) {
+    }).catch(function(error) {
       console.log('error: ', error);
-      })
-  console.log('request: ', req.body);
+    });
 });
 
-
-
 app.post('/newreview', function(req, res) {
-
-  console.log('THIS IS A NEW REVIEW!');
-
-
   Reviews
     .build( req.body )
     .save()
     .then(function(body) {
-      console.log(body)
       res.status(201).send(body);
-      }).catch(function(error) {
+    }).catch(function(error) {
       console.log('error: ', error);
-      })
-  console.log('request: ', req.body);
+    });
 });

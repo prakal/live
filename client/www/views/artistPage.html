@@ -1,28 +1,51 @@
 v<ion-view title="home">
   <ion-content padding="false" class="artistContainer">
     
-    <img ng-src="{{artist.artistPic}}">
-    <h1>{{artist.artistName}}</h1>
-    <h2>{{artist.genre}}</h2>
-    <div class="reviews">
-      <span class="avgRating">{{artist.avgRating}}</span>
-      <rating ng-model="artist.avgRating" max="max"></rating>
-      <span class="numOfReviews">12 reviews</span>
+    
+    <div class="item-thumbnail-left artistPage item">
+      <img ng-src="{{artist.artistPic}}" />
+      <h1>{{artist.artistName}}</h1>
+      <h2>{{artist.genre}}</h2>
+      <div class="reviews">
+        <span class="avgRating">{{artist.avgRating}}</span>
+        <rating ng-model="artist.avgRating" max="max"></rating>
+        <span>{{ reviewsCount }} review<span ng-hide="oneReview()">s</span></span>
+      </div>
+    </div>
+  
+    <div ng-click="toggle()" ng-show="artist.bio" class="aboutArtist">
+      <i class="icon ion-music-note"></i>
+      About the Artist
     </div>
 
-    <button ng-click="writeReview()" class="button button-block button-positive">
-      Write a Review!
-    </button>
+    <div class="aboutArtistText" ng-hide="hideText">
+      {{ artist.bio }}
+    </div>
 
-    <ion-list>
-      <ion-item ng-repeat="review in reviews" class="review">
-          <div>{{review.username}}</div>
-          <div>{{review.rating}}</div>
-          <div>{{review.venue}}</div>
-          <div>{{review.textReview}}</div>
-      </ion-item>
-     
-    </ion-list>
+    <div class="reviewCon">
+      <button ng-click="writeReview()" class="button button-block  writeReview">
+        Leave a Review
+      </button>
 
+      <div class="reviewsHeader">
+        Reviews
+      </div>
+      <ion-list class="reviews">
+        <ion-item ng-repeat="review in reviews | orderBy: '-createdAt' " class="review item-avatar">
+          <img src="./assets/hipster.png">
+          <h1>{{review.username}}</h1>
+          <ul class="details">
+            <li>{{ review.createdAt | date: 'shortDate' }}</li>
+            <li>{{ review.venue }}</li>
+          </ul>
+          <div class="reviews">
+            <rating ng-model="review.rating" max="max"></rating>
+          </div>
+          <p>{{review.textReview}}</p>
+        </ion-item>
+       
+      </ion-list>
+
+    </div>
   </ion-content>
 </ion-view>

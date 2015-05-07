@@ -1,6 +1,6 @@
 var db = require('../config');
 var Sequelize = require('sequelize');
-var reviews = require('./reviews.js');
+var Review = require('./reviews.js');
 
 var Artist = db.define('artist', {
   tableName: 'artists',
@@ -20,14 +20,15 @@ var Artist = db.define('artist', {
   avgRating: Sequelize.INTEGER
 });
 
-// Artist.hasMany(reviews)
+// Artist.hasMany(Review);
 
 Artist.sync({force: true}).then(function () {
   return Artist.create({
     artistName: 'U2',
     artistPic: 'https://i.scdn.co/image/bbf6684084d0f444b92789abcdb66bb16c7d2c43',
     genre: 'Rock',
-    avgRating: 5
+    avgRating: 5,
+    bio: 'U2 are an Irish rock band from Dublin. Formed in 1976, the group consists of Bono (vocals and guitar), The Edge (guitar, keyboards, and vocals), Adam Clayton (bass guitar), and Larry Mullen Jr.'
   });
 })
 .then(function () {
