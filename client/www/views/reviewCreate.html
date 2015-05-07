@@ -1,29 +1,36 @@
-<ion-view title="reviewCreate">
-  <!-- <ion-content padding="true"> -->
-  <h1>New Review</h1>
+
+
+
+<ion-view title="reviewCreate" cache-view="false">
+
+  <ion-content padding="true">
+  <h1>Leave a Review</h1>
+
   
-    <form ng-submit="postReview()">
+    <form ng-submit="postReview()" class="reviewForm">
       <div class="list">
+        <div class="rating">
+          <rating ng-model="rate" max="max"></rating>
+        </div>
+        <hr/>
         <label class="item item-input">
           <input ng-model="review.username" type="text" placeholder="What's your name?" required>
         </label>
-        <label class="item item-input">
-          <input ng-model="review.rating" type="number" placeholder="How well did they perform from 1-5?" required>
-        </label>
+        
         <label class="item item-input">
           <input ng-model="review.venue" type="text" placeholder="Where did they play?">
         </label>
-        <label class="item item-input">
+        <label class="item item-input reviewText">
           <textarea ng-model="review.textReview" placeholder="How'd they do?"></textarea>
         </label>
+
         <button type="submit" class="button button-full button-balanced">Submit!</button>
       </div>
     </form>
     
-    <button ng-click="postReview()">post</button>
-    <button ng-click="back()">back button</button>
+    
 
-  <!-- </ion-content> -->
+  </ion-content>
 </ion-view>
 <!-- 
   timestamps: true,
