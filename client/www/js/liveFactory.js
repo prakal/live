@@ -2,8 +2,19 @@ function liveFactory($http, $location){
 
   var liveFactory = {};
 
-  var artistNameReview 
-  
+  var artistNameReview;
+
+  liveFactory.getAllArtists = function(){
+    return $http({
+      method: 'GET',
+      url: '/art'
+    })
+    .then(function(resp){
+      liveFactory.artists = resp.data;
+      console.log('test', liveFactory.artists);
+    })
+  };
+
   liveFactory.getNewArtist = function(){
     return $http({
       method: 'GET',

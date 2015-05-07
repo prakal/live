@@ -1,25 +1,14 @@
-function homeCtrl($scope, $http, $location, liveFactory){
+function homeCtrl($scope, $location, liveFactory){
   
-   $scope.getAllArtists = function(){
-    return $http({
-      method: 'GET',
-      url: '/art'
-    })
-    .then(function(resp){
-      $scope.artists = resp.data;
-    })
-  };
-
   $scope.artistPagefromHome = function(path){
     $location.path('/artist/' + path);
-  }
+  };
 
   $scope.max = 5;
 
-  $scope.getAllArtists();
-
-  $scope.getNewArtist = liveFactory.getNewArtist;
+  $scope.obj = liveFactory;
+  $scope.obj.getAllArtists();
 }
 
 angular.module('liveApp')
-.controller('homeCtrl', ['$scope', '$http', '$location', 'liveFactory', homeCtrl]);
+.controller('homeCtrl', ['$scope', '$location', 'liveFactory', homeCtrl]);

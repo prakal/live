@@ -6,6 +6,7 @@ function mainCtrl($scope, $location, liveFactory){
     $location.path('/');
     $scope.query = null;
     $scope.q = null;
+    liveFactory.getAllArtists();
   }
 
   $scope.artistsSearch = function(){

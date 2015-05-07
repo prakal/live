@@ -2,7 +2,7 @@
   <ion-content padding="false">
     <ion-list class="list">
       
-      <ion-item ng-repeat="artist in filteredArtists = (artists | filter: q)" class="item item-thumbnail-left" ng-click="artistPagefromHome(artist.artistName)">
+      <ion-item ng-repeat="artist in filteredArtists = (obj.artists | filter: q)" class="item item-thumbnail-left" ng-click="artistPagefromHome(artist.artistName)">
           <img ng-src="{{artist.artistPic}}">
           <h1>{{artist.artistName}}</h1>
           <h2>{{artist.genre}}</h2>
@@ -15,7 +15,7 @@
       
       <div ng-show="!filteredArtists.length" class="noResults">
         Sorry, <span class="query">{{ q }}</span> is not in our catalogue.<br>
-        <button ng-click="getNewArtist()" class="button button-block button-positive">
+        <button ng-click="obj.getNewArtist()" class="button button-block button-positive">
           Create <span class="query">{{ q }}</span>'s artist page now!
         </button>
       </div>
