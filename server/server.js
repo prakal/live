@@ -30,14 +30,17 @@ app.get('/art', function(req, res){
 
 app.get('/artist', function(req, res){
   Artists.find({
-    where: {artistName: req.query.artistName}})
+    where: { artistName: req.query.artistName }
+  })
   .then(function (artist) {
     res.status(200).json(artist);
   });
 });
 
 app.get('/getreviews', function(req, res){
-  Reviews.findAll({})
+  Reviews.findAndCountAll({
+    where: { artistName: req.query.artistName }
+  })
   .then(function (review) {
     console.log("These are the reviews",review)
     res.status(200).json(review);
@@ -54,7 +57,6 @@ app.post('/newartist', function(req, res) {
       console.log('error: ', error);
     });
 });
-
 
 app.post('/newreview', function(req, res) {
   Reviews

@@ -5,7 +5,7 @@
       {{ searchResults.length }} results for <span class="strong">{{ searchQuery }}</span>
     </div>
   
-    <ion-list class="list">
+    <ion-list class="artistList">
       <ion-item ng-repeat="item in searchResults" class="item item-thumbnail-left" ng-click="pickArtist(item)">
         <img src={{item.images[2].url}} ng-show="item.images[2].url">
         <div class="fallback" ng-show="!item.images[2].url">

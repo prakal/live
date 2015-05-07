@@ -2,8 +2,6 @@ function liveFactory($http, $location){
 
   var liveFactory = {};
 
-  var artistNameReview;
-
   liveFactory.getAllArtists = function(){
     return $http({
       method: 'GET',
@@ -11,7 +9,6 @@ function liveFactory($http, $location){
     })
     .then(function(resp){
       liveFactory.artists = resp.data;
-      console.log('test', liveFactory.artists);
     })
   };
 
@@ -27,7 +24,7 @@ function liveFactory($http, $location){
         $location.path('/results');
       }
       else {
-        console.log('takes you to blank create artist page');
+        $location.path('/newartist');
       }
     })
   };
