@@ -16,7 +16,9 @@
         <label class="item item-input">
           <input ng-model="review.username" type="text" placeholder="What's your name?" required>
         </label>
-        
+        <label class="item item-input">
+          <rating ng-model="review.rating" max="max"></rating>
+        </label>
         <label class="item item-input">
           <input ng-model="review.venue" type="text" placeholder="Where did they play?">
         </label>
@@ -32,14 +34,3 @@
 
   </ion-content>
 </ion-view>
-<!-- 
-  timestamps: true,
-  review_id: { 
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  venue: Sequelize.STRING,
-  rating: Sequelize.INTEGER,
-  textReview: Sequelize.TEXT -->
-

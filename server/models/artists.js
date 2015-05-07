@@ -17,7 +17,11 @@ var Artist = db.define('artist', {
   artistPic: Sequelize.STRING,
   genre: Sequelize.STRING,
   bio: Sequelize.TEXT,
-  avgRating: Sequelize.INTEGER
+  avgRating: Sequelize.INTEGER,
+  reviewCount: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0    
+  }
 });
 
 // Artist.hasMany(Review);

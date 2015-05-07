@@ -8,6 +8,13 @@ function homeCtrl($scope, $location, liveFactory){
 
   $scope.obj = liveFactory;
   $scope.obj.getAllArtists();
+
+  $scope.oneReview = function(artist){
+    if(artist.reviewCount === 1){
+      return true;
+    }
+  }
+
 }
 
 angular.module('liveApp')

@@ -36,13 +36,14 @@
     <ion-pane>
 
       <!-- APP HEADER -->
-      <ion-header-bar align-title="left" class="bar-dark bar-header mainHeader">
+
+      <ion-header-bar align-title="left" class="bar-dark bar-header mainHeader" ng-hide="obj.hideMainHeader">
         <div class="title" ng-click="goHome()"></div>
         <button class="button button-icon icon ion-navicon"></button>
       </ion-header-bar>
       
       <!-- SEARCH SUB-HEADER -->
-      <ion-header-bar class="bar-dark bar-subheader item-input-inset">
+      <ion-header-bar class="bar-dark bar-subheader item-input-inset" ng-hide="obj.hideMainHeader">
         <label class="item-input-wrapper search-artist">
           <i class="icon ion-ios-search placeholder-icon"></i>
           <form ng-submit="artistsSearch()">

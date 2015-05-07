@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var sequelize = require('sequelize');
 var db = require('./config');
 var Artists = require('./models/artists');
 var Reviews = require('./models/reviews');
@@ -42,8 +43,16 @@ app.get('/getreviews', function(req, res){
     where: { artistName: req.query.artistName }
   })
   .then(function (review) {
-    console.log("These are the reviews",review)
+    // console.log("These are the reviews",review)
     res.status(200).json(review);
+  });
+});
+
+app.get('/getAvgRating', function(req, res){
+  db.query("SELECT AVG(rating) FROM `reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
+  .then(function(avgRating) {
+    console.log('average rating: ', avgRating);
+    res.status(200).json(avgRating);
   });
 });
 
@@ -53,7 +62,8 @@ app.post('/newartist', function(req, res) {
     .save()
     .then(function(body) {
       res.status(201).send(body);
-    }).catch(function(error) {
+    })
+    .catch(function(error) {
       console.log('error: ', error);
     });
 });
@@ -68,3 +78,29 @@ app.post('/newreview', function(req, res) {
       console.log('error: ', error);
     });
 });
+
+app.post('/updateAvgRating', function(req, res) {
+  console.log('request body for updateAvgRating', req.body);
+  Artists
+    .update( {
+      avgRating: req.body.avgRating,
+      reviewCount: sequelize.literal('reviewCount + 1')
+    },
+    { where: { artistName: req.query.artistName } })
+    // .save()
+    .then(function(body) {
+      console.log('response to new avg rating:', body);
+      res.status(201).send(body);
+    })
+    .catch(function(error) {
+      console.log('error: ', error);
+    })
+
+})
+
+
+
+
+
+
+
