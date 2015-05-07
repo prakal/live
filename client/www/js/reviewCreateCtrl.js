@@ -2,6 +2,10 @@ function reviewCreateCtrl($scope, $http, $location,liveFactory){
   
   $scope.review = {}
 
+  $scope.max = 5;
+  
+  
+
   $scope.review.artistName = liveFactory.artistNameReview
   var review = $scope.review
 
@@ -11,9 +15,11 @@ function reviewCreateCtrl($scope, $http, $location,liveFactory){
 
   $scope.postReview = function (){
     console.log("post review works")
+    $scope.review.rating = $scope.rate
+    console.log("Rating",$scope.rate)
     console.log("this",liveFactory.artistNameReview)
     $scope.back();
-    console.log($scope.review)
+    console.log("Review Object",$scope.review)
     return $http({
       method: 'POST',
       url: '/newreview',

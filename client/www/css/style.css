@@ -216,10 +216,57 @@ ul.rating li i.ion-ios-star-outline:before {
   margin-top: 5px;
 }
 
+/*** Review CREATION PAGE ***/
+
+.reviewForm textarea {
+  /*border: 1px solid #979797;*/
+  width: 95%;
+  resize: none;
+  padding: 5px;
+  height: 200px;
+  margin-top: 5px;
+  
+}
+
+label.item.item-input.reviewText{
+  margin-top: 20px;
+}
+
+
+/*.reviewForm .reviewText{
+  padding-top: 50px;
+}*/
+
+.reviewForm .rating {
+  padding: 10px 0px;
+  position: relative;
+  border-bottom: 10px
+  
+}
+
+.reviewForm input {
+  /*border: 1px solid #979797;*/
+  
+  resize: none;
+  padding: 5px;
+  height: 40px;
+  margin-top: 5px;
+}
 
 
 
+.reviewForm ul.rating {
+  font-size:200% !important;
+  text-align:center;
+  display: block;
+  margin:0 auto;
+}
 
+hr {
+  border-color:aqua;
+  background-color: aqua;
+  color: aqua;
+}
 
 
 
