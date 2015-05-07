@@ -2,6 +2,8 @@ function liveFactory($http, $location){
 
   var liveFactory = {};
 
+  var artistNameReview 
+  
   liveFactory.getNewArtist = function(){
     return $http({
       method: 'GET',

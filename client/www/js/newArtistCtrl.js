@@ -1,4 +1,4 @@
-function newArtistCtrl($scope, $http, liveFactory){
+function newArtistCtrl($scope, $http, $location, liveFactory){
  
   var chosenArtist = liveFactory.chosenArtist;
  
@@ -17,11 +17,13 @@ function newArtistCtrl($scope, $http, liveFactory){
       data: $scope.artist
     })
     .then(function (resp) {
-      console.log('response data:', resp.data);
+      $location.path('/artist/' + $scope.artist.artistName);
       return resp.data;
-    });
+      });
   };
 }
 
 angular.module('liveApp')
-.controller('newArtistCtrl', ['$scope', '$http', 'liveFactory', newArtistCtrl]);
+.controller('newArtistCtrl', ['$scope', '$http', '$location', 'liveFactory', newArtistCtrl]);
+
+
