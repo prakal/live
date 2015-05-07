@@ -1,14 +1,25 @@
 v<ion-view title="home">
   <ion-content padding="false" class="artistContainer">
     
-    <img ng-src="{{artist.artistPic}}">
-    <h1>{{artist.artistName}}</h1>
-    <h2>{{artist.genre}}</h2>
-    <div class="reviews">
-      <span class="avgRating">{{artist.avgRating}}</span>
-      <rating ng-model="artist.avgRating" max="max"></rating>
-      <span class="numOfReviews">12 reviews</span>
-    </div>
+    <ion-list>
+      <ion-item class="item item-thumbnail-left">
+        <img ng-src="{{artist.artistPic}}" />
+        <h1>{{artist.artistName}}</h1>
+        <h2>{{artist.genre}}</h2>
+        <div class="reviews">
+          <span class="avgRating">{{artist.avgRating}}</span>
+          <rating ng-model="artist.avgRating" max="max"></rating>
+          <span class="numOfReviews">12 reviews</span>
+        </div>
+      </ion-item>
+      <ion-item>
+
+      <i class="icon ion-email"></i>
+      ion-music-note
+      </ion-item>
+    </ion-list>
+
+
 
     <button ng-click="writeReview()" class="button button-block button-positive">
       Write a Review!

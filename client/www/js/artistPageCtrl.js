@@ -1,8 +1,11 @@
 function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
   
   $scope.artistName = $stateParams.artistName;
+
   var artistName = $scope.artistName
   console.log($scope.artistName);
+
+  $scope.max = 5;
 
   $scope.getArtist = function(){
     return $http({
@@ -13,7 +16,6 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     .then(function(resp){
 
       $scope.artist = resp.data;
-      console.log('artist for page:', $scope.artist);
     })
   };
 

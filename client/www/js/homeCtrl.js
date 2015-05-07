@@ -6,14 +6,11 @@ function homeCtrl($scope, $http, $location, liveFactory){
       url: '/art'
     })
     .then(function(resp){
-      
       $scope.artists = resp.data;
-      console.log('artists in client:', $scope.artists);
     })
   };
 
   $scope.artistPagefromHome = function(path){
-    
     $location.path('/artist/' + path);
   }
 

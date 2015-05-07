@@ -19,40 +19,40 @@ angular.module('liveApp', ['ionic', 'ionic.rating'])
 })
 
 .config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/')
+  $urlRouterProvider.otherwise('/')
 
-    $stateProvider.state('home', {
-      url: '/',
-      templateUrl: './views/home.html',
-      controller: 'homeCtrl'
-    })
+  $stateProvider.state('home', {
+    url: '/',
+    templateUrl: './views/home.html',
+    controller: 'homeCtrl'
+  })
 
-    $stateProvider.state('newArtist', {
-      url: '/newartist',
-      templateUrl: './views/newArtist.html',
-      controller: 'newArtistCtrl'
-    })
+  $stateProvider.state('newArtist', {
+    url: '/newartist',
+    templateUrl: './views/newArtist.html',
+    controller: 'newArtistCtrl'
+  })
 
-    // Search results from calling Spotify API to create a new artist
-    $stateProvider.state('searchResults', {
-      url: '/results',
-      templateUrl: './views/searchResults.html',
-      controller: 'searchResultsCtrl'
-    })
-    
-    //Route for review creation.
-    $stateProvider.state('newReview', {
-      url: '/newreview',
-      templateUrl: './views/reviewCreate.html',
-      controller: 'reviewCreateCtrl'
-    })
+  // Search results from calling Spotify API to create a new artist
+  $stateProvider.state('searchResults', {
+    url: '/results',
+    templateUrl: './views/searchResults.html',
+    controller: 'searchResultsCtrl'
+  })
+  
+  //Route for review creation.
+  $stateProvider.state('newReview', {
+    url: '/newreview',
+    templateUrl: './views/reviewCreate.html',
+    controller: 'reviewCreateCtrl'
+  })
 
-    // Artist page
-    $stateProvider.state('artistPage', {
-      url: '/artist/:artistName',
-      templateUrl: './views/artistPage.html',
-      controller: 'artistPageCtrl'
-    })
+  // Artist page
+  $stateProvider.state('artistPage', {
+    url: '/artist/:artistName',
+    templateUrl: './views/artistPage.html',
+    controller: 'artistPageCtrl'
+  })
 
 });
 
