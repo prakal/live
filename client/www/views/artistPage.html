@@ -1,4 +1,4 @@
-v<ion-view title="home">
+<ion-view title="home" class="has-header has-subheader">
   <ion-content padding="false" class="artistContainer">
     
     
@@ -24,7 +24,8 @@ v<ion-view title="home">
 
     <div class="reviewCon">
       <button ng-click="writeReview()" class="button button-block  writeReview">
-        Leave a Review
+        <span ng-show="reviewsExist()">Leave a Review</span>
+        <span ng-hide="reviewsExist()">Be first to review!</span>
       </button>
 
       <div class="reviewsHeader">

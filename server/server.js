@@ -43,7 +43,6 @@ app.get('/getreviews', function(req, res){
     where: { artistName: req.query.artistName }
   })
   .then(function (review) {
-    // console.log("These are the reviews",review)
     res.status(200).json(review);
   });
 });
@@ -80,27 +79,20 @@ app.post('/newreview', function(req, res) {
 });
 
 app.post('/updateAvgRating', function(req, res) {
-  console.log('request body for updateAvgRating', req.body);
   Artists
     .update( {
       avgRating: req.body.avgRating,
       reviewCount: sequelize.literal('reviewCount + 1')
     },
-    { where: { artistName: req.query.artistName } })
-    // .save()
+    { where: 
+      { artistName: req.query.artistName }
+    })
     .then(function(body) {
-      console.log('response to new avg rating:', body);
       res.status(201).send(body);
     })
     .catch(function(error) {
       console.log('error: ', error);
     })
-
 })
-
-
-
-
-
 
 

@@ -20,6 +20,16 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
           return true;
         }
       }
+      $scope.reviewsExist = function() {
+        return $scope.artist.reviewCount; // if($scope.artist.reviewCount > 0){
+        //   return true;
+        // }
+        // else {
+        //   return false;
+        // }
+
+        // $scope.artist.reviewCount > 0 ? return true : return false;
+      }
     })
   };
 

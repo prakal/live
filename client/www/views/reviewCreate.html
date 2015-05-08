@@ -1,33 +1,33 @@
-
-
-
 <ion-view title="reviewCreate" cache-view="false">
-
-  <ion-content padding="true">
-  <h1>Leave a Review</h1>
-
   
-    <form ng-submit="postReview()" class="reviewForm">
-      <div class="list">
-        <div class="rating">
-          <rating ng-model="rate" max="max"></rating>
-        </div>
-        <hr/>
-        <label class="item item-input">
-          <input ng-model="review.username" type="text" placeholder="What's your name?" required>
-        </label>
-        <label class="item item-input">
-          <rating ng-model="review.rating" max="max"></rating>
-        </label>
-        <label class="item item-input">
-          <input ng-model="review.venue" type="text" placeholder="Where did they play?">
-        </label>
-        <label class="item item-input reviewText">
-          <textarea ng-model="review.textReview" placeholder="How'd they do?"></textarea>
-        </label>
+  <ion-header-bar align-title="left" class="bar-light bar-header reviewCreateHeader">
+    <i class="icon ion-arrow-left-c" ng-click="goBack()"></i>
+    <h1>Leave a Review</h1>
+    <div class="postButton" ng-click="postReview()">Post</div>
+  </ion-header-bar>
 
-        <button type="submit" class="button button-full button-balanced">Submit!</button>
-      </div>
+  <ion-content padding="false" class="reviewPage">
+
+    <form class="reviewForm">
+      
+        <div class="rating">
+          <rating ng-model="review.rating" max="max"></rating>
+        </div>
+        
+        <div class="padding">
+          <label class="item item-input">
+            <input ng-model="review.username" type="text" placeholder="Your name?" required>
+          </label>
+          <label class="item item-input">
+            <input ng-model="review.venue" type="text" placeholder="Venue?">
+          </label>
+          <label class="item item-input reviewText">
+            <textarea ng-model="review.textReview" placeholder="How was the performance?"></textarea>
+          </label>
+        </div>
+
+        <!-- <button type="submit" class="button button-full button-balanced">Submit!</button> -->
+      
     </form>
     
     

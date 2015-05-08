@@ -10,7 +10,7 @@
   top: 15px;
 }
 .has-subheader{
-  top: 54px;
+  top: 22px;
 }
 
 
@@ -216,60 +216,50 @@ ul.rating li i.ion-ios-star-outline:before {
   margin-top: 5px;
 }
 
-/*** Review CREATION PAGE ***/
 
-.reviewForm textarea {
-  /*border: 1px solid #979797;*/
-  width: 95%;
-  resize: none;
-  padding: 5px;
-  height: 200px;
-  margin-top: 5px;
-  
+/*** REVIEW CREATION PAGE ***/
+.reviewCreateHeader h1 {
+  font-size: 1.5em;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.reviewCreateHeader i {
+  font-size: 1.8em;
+  float: left;
+  margin: 15px 5px 0 10px;
+}
+.postButton {
+  position: absolute;
+  right: 30px;
+  top: 22px;
+  font-size: 1.2em;
 }
 
 label.item.item-input.reviewText{
   margin-top: 20px;
 }
-
-
-/*.reviewForm .reviewText{
-  padding-top: 50px;
-}*/
-
-.reviewForm .rating {
-  padding: 10px 0px;
-  position: relative;
-  border-bottom: 10px
-  
+.reviewForm {
+  top: 30px;
 }
-
 .reviewForm input {
-  /*border: 1px solid #979797;*/
-  
   resize: none;
   padding: 5px;
   height: 40px;
   margin-top: 5px;
 }
-
-
-
 .reviewForm ul.rating {
-  font-size:200% !important;
-  text-align:center;
+  font-size: 200%;
+  text-align: center;
   display: block;
-  margin:0 auto;
+  margin: 45px auto 20px;
 }
-
-hr {
-  border-color:aqua;
-  background-color: aqua;
-  color: aqua;
+.reviewForm textarea {
+  width: 95%;
+  resize: none;
+  padding: 5px;
+  height: 200px;
+  margin-top: 5px;
 }
-
-
-
 
 
 
