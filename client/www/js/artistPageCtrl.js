@@ -14,7 +14,22 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     })
     .then(function(resp){  
       $scope.artist = resp.data;
-      console.log('This Artist info:', $scope.artist)
+      $scope.roundedRating = Math.round($scope.artist.avgRating);
+      $scope.oneReview = function() {
+        if($scope.artist.reviewCount === 1){
+          return true;
+        }
+      }
+      $scope.reviewsExist = function() {
+        return $scope.artist.reviewCount; // if($scope.artist.reviewCount > 0){
+        //   return true;
+        // }
+        // else {
+        //   return false;
+        // }
+
+        // $scope.artist.reviewCount > 0 ? return true : return false;
+      }
     })
   };
 
@@ -27,24 +42,18 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     .then(function(resp){
       $scope.reviews = resp.data.rows;
       $scope.reviewsCount = resp.data.count;
-      console.log('number of reviews', $scope.numReviews);
     })
   };
   
   $scope.writeReview = function(){
     $location.path('/newreview');
-    liveFactory.artistNameReview = artistName
+    liveFactory.artistNameReview = artistName;
   }
 
   $scope.toggle = function() {
     $scope.hideText = !$scope.hideText;
   };
 
-  $scope.oneReview = function() {
-    if($scope.reviewsCount === 1){
-      return true;
-    }
-  }
 
   $scope.$on('$ionicView.enter', function(){
     $scope.hideText = true;

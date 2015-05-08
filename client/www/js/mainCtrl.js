@@ -16,6 +16,8 @@ function mainCtrl($scope, $location, liveFactory){
     $scope.query = null;
   }
 
+  $scope.obj = liveFactory;
+
 }
 
 angular.module('liveApp')

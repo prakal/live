@@ -1,4 +1,4 @@
-v<ion-view title="home">
+<ion-view title="home" class="has-header has-subheader">
   <ion-content padding="false" class="artistContainer">
     
     
@@ -7,9 +7,9 @@ v<ion-view title="home">
       <h1>{{artist.artistName}}</h1>
       <h2>{{artist.genre}}</h2>
       <div class="reviews">
-        <span class="avgRating">{{artist.avgRating}}</span>
-        <rating ng-model="artist.avgRating" max="max"></rating>
-        <span>{{ reviewsCount }} review<span ng-hide="oneReview()">s</span></span>
+        <span class="avgRating">{{artist.avgRating | number: 1}}</span>
+        <rating readonly="true" ng-model="roundedRating" max="max"></rating>
+        <span>{{ artist.reviewCount }} review<span ng-hide="oneReview()">s</span></span>
       </div>
     </div>
   
@@ -24,7 +24,8 @@ v<ion-view title="home">
 
     <div class="reviewCon">
       <button ng-click="writeReview()" class="button button-block  writeReview">
-        Leave a Review
+        <span ng-show="reviewsExist()">Leave a Review</span>
+        <span ng-hide="reviewsExist()">Be first to review!</span>
       </button>
 
       <div class="reviewsHeader">
@@ -39,7 +40,7 @@ v<ion-view title="home">
             <li>{{ review.venue }}</li>
           </ul>
           <div class="reviews">
-            <rating ng-model="review.rating" max="max"></rating>
+            <rating readonly="true" ng-model="review.rating" max="max"></rating>
           </div>
           <p>{{review.textReview}}</p>
         </ion-item>

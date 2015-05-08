@@ -1,6 +1,12 @@
 function liveFactory($http, $location){
 
   var liveFactory = {};
+  liveFactory.hideMainHeader = false;
+
+  liveFactory.toggleHeader = function(){
+    liveFactory.hideMainHeader = !liveFactory.hideMainHeader;
+    console.log('hide main header', liveFactory.hideMainHeader);
+  };
 
   liveFactory.getAllArtists = function(){
     return $http({
