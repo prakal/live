@@ -2,13 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var sequelize = require('sequelize');
 var db = require('./config');
-var Artists = require('./models/artists');
-var Reviews = require('./models/reviews');
+var http = require('http');
+// var Artists = require('./models/artists');
+// var Reviews = require('./models/reviews');
 
 var app = express();
-var session = require('express-session');
 
-app.set('views', '../client/www')
+app.set('views', '../client/www');
+app.set('view engine', 'jade');
 
 app.use(express.static(__dirname + '/../client/www'));
 
@@ -17,9 +18,15 @@ app.use(bodyParser.json());
 
 app.set('port', (process.env.PORT || 5000));
 
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'));
+db.sequelize.sync().then(function() {
+  http.createServer(app).listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
+  });
 });
+
+// app.listen(app.get('port'), function() {
+//   console.log("Node app is running at localhost:" + app.get('port'));
+// });
 
 app.get('/art', function(req, res){
   Artists.findAll({})
