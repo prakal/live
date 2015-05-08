@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var sequelize = require('sequelize');
 var db = require('./config');
 var http = require('http');
+var hstore = require('pg-hstore')();
 // var Artists = require('./models/artists');
 // var Reviews = require('./models/reviews');
 
