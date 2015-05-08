@@ -24,8 +24,8 @@ if (!global.hasOwnProperty('db')) {
     sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_BLACK_URL, {
       dialect:  'postgres',
       protocol: 'postgres',
-      port:     match[4],
-      host:     match[3],
+      port:     5432,
+      host:     'ec2-184-73-253-4.compute-1.amazonaws.com',
       logging:  true //false
     })
   } else {
