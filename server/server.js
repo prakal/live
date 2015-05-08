@@ -24,20 +24,15 @@ db.sequelize.sync().then(function() {
   });
 });
 
-// app.listen(app.get('port'), function() {
-//   console.log("Node app is running at localhost:" + app.get('port'));
-// });
-
 app.get('/art', function(req, res){
-  Artists.findAll({})
+  db.Artists.findAll({})
   .then(function (artists) {
-    // console.log("This is all of the artists",artists)
     res.status(200).json(artists);
   });
 });
 
 app.get('/artist', function(req, res){
-  Artists.find({
+  db.Artists.find({
     where: { artistName: req.query.artistName }
   })
   .then(function (artist) {
@@ -46,7 +41,7 @@ app.get('/artist', function(req, res){
 });
 
 app.get('/getreviews', function(req, res){
-  Reviews.findAndCountAll({
+  db.Reviews.findAndCountAll({
     where: { artistName: req.query.artistName }
   })
   .then(function (review) {
@@ -55,7 +50,7 @@ app.get('/getreviews', function(req, res){
 });
 
 app.get('/getAvgRating', function(req, res){
-  db.query("SELECT AVG(rating) FROM `reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
+  db.sequelize.query("SELECT AVG(rating) FROM `reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
   .then(function(avgRating) {
     console.log('average rating: ', avgRating);
     res.status(200).json(avgRating);
@@ -63,7 +58,7 @@ app.get('/getAvgRating', function(req, res){
 });
 
 app.post('/newartist', function(req, res) {
-  Artists
+  db.Artists
     .build( req.body )
     .save()
     .then(function(body) {
@@ -75,7 +70,7 @@ app.post('/newartist', function(req, res) {
 });
 
 app.post('/newreview', function(req, res) {
-  Reviews
+  db.Reviews
     .build( req.body )
     .save()
     .then(function(body) {
@@ -86,7 +81,7 @@ app.post('/newreview', function(req, res) {
 });
 
 app.post('/updateAvgRating', function(req, res) {
-  Artists
+  db.Artists
     .update( {
       avgRating: req.body.avgRating,
       reviewCount: sequelize.literal('reviewCount + 1')

@@ -30,7 +30,20 @@ if (!global.hasOwnProperty('db')) {
     })
   } else {
     // the application is executed on the local machine ... use mysql
-    sequelize = new Sequelize('live-app-db', 'root', null)
+    // sequelize = new Sequelize('live-app-db', 'root', null)
+
+    sequelize = new Sequelize('database', 'username', 'password', {
+      host: '127.0.0.1',
+      dialect: 'sqlite',
+
+      pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+      },
+      storage: './db/liveApp.sqlite'
+    });
+
   }
 
   global.db = {
