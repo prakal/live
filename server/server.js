@@ -17,10 +17,10 @@ app.use(express.static(__dirname + '/../client/www'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.set('port', (process.env.PORT || 5000));
+// app.set('port', (process.env.PORT || 5000));
 
 db.sequelize.sync().then(function() {
-  http.createServer(app).listen(app.get('port'), function(){
+  http.createServer(app).listen(process.env.PORT || 3000, function(){
     console.log('Express server listening on port ' + app.get('port'));
   });
 });
