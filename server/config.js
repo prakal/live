@@ -14,12 +14,12 @@
 
 // module.exports = db;
 
-var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
 if (!global.hasOwnProperty('db')) {
   var Sequelize = require('sequelize')
     , sequelize = null
 
   if (process.env.HEROKU_POSTGRESQL_BLACK_URL) {
+    var match = process.env.DATABASE_URL.match(/postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/)
     // the application is executed on Heroku ... use the postgres database
     sequelize = new Sequelize(match[5], match[1], match[2], {
       dialect:  'postgres',
@@ -54,8 +54,8 @@ if (!global.hasOwnProperty('db')) {
   global.db = {
     Sequelize: Sequelize,
     sequelize: sequelize,
-    Artists: sequelize.import(__dirname + '/models/artists.js'),
-    Reviews: sequelize.import(__dirname + '/models/reviews.js')
+    Artists: sequelize.import(__dirname + '/models/artists.js')
+    // Reviews: sequelize.import(__dirname + '/models/reviews.js')
   }
 
 }

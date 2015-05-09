@@ -19,13 +19,14 @@ function liveFactory($http, $location){
   };
 
   liveFactory.getNewArtist = function(){
+    console.log('liveFactory.artist', liveFactory.artist);
     return $http({
       method: 'GET',
       url: 'https://api.spotify.com/v1/search?q=' + liveFactory.artist + '&type=artist',
     })
     .then(function(resp){
       liveFactory.results = resp.data.artists;
-
+      // console.log('liveFactory.results', liveFactory.results);
       if(liveFactory.results.items.length > 0){
         $location.path('/results');
       }
