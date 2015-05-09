@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Artist", {
-    timestamps: true
-    // artist_id: { 
-    //   type: DataTypes.INTEGER,
-    //   autoIncrement: true,
-    //   primaryKey: true
-    // },
+    // timestamps: true
+    artist_id: { 
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    }
     // artistName: {
     //   type: DataTypes.STRING,
     //   unique: true
