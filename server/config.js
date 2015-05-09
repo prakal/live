@@ -29,9 +29,9 @@ if (!global.hasOwnProperty('db')) {
       port:     match[4],
       host:     match[3],
       logging:  false
-      // dialectOptions: {
-      //   ssl: true
-      // }
+      dialectOptions: {
+        ssl: true
+      }
     })
   } else {
     // the application is executed on the local machine ... use mysql
@@ -53,8 +53,8 @@ if (!global.hasOwnProperty('db')) {
 
   global.db = {
     Sequelize: Sequelize,
-    sequelize: sequelize,
-    Artists: sequelize.import(__dirname + '/models/artists.js')
+    sequelize: sequelize
+    // Artists: sequelize.import(__dirname + '/models/artists.js')
     // Reviews: sequelize.import(__dirname + '/models/reviews.js')
   }
 
