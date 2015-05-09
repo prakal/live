@@ -1,6 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Artist", {
-    tableName: 'artists',
     timestamps: true,
     artist_id: { 
       type: DataTypes.INTEGER,
