@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Review", {
     // timestamps: true,
-    // artistName: DataTypes.STRING,
+    // artistName: DataTypes.STRING
     // username: DataTypes.STRING,
     // review_id: { 
     //   type: DataTypes.INTEGER,
