@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Artist", {
-    // timestamps: true
+    tableName: 'artists',
     artist_id: { 
       type: DataTypes.INTEGER,
       autoIncrement: true,
