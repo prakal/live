@@ -23,6 +23,7 @@
     "express": "^4.0.0",
     "express-session": "^1.7.2",
     "jade": "*",
+    "method-override": "^2.3.2",
     "mysql": "^2.6.2",
     "pg": "^4.3.0",
     "pg-hstore": "^2.3.2",

@@ -4,6 +4,7 @@ var sequelize = require('sequelize');
 var db = require('./config');
 var http = require('http');
 var hstore = require('pg-hstore')();
+var methodOverride = require('method-override');
 // var Artists = require('./models/artists');
 // var Reviews = require('./models/reviews');
 
@@ -16,6 +17,7 @@ app.use(express.static(__dirname + '/../client/www'));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(methodOverride());
 
 var port = process.env.PORT || 5000;
 
