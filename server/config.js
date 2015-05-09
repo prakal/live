@@ -28,7 +28,7 @@ if (!global.hasOwnProperty('db')) {
       // host:     'ec2-184-73-253-4.compute-1.amazonaws.com',
       port:     match[4],
       host:     match[3],
-      logging:  false
+      logging:  false,
       dialectOptions: {
         ssl: true
       }
