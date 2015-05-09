@@ -53,8 +53,8 @@ if (!global.hasOwnProperty('db')) {
 
   global.db = {
     Sequelize: Sequelize,
-    sequelize: sequelize
-    // Artists: sequelize.import(__dirname + '/models/artists.js'),
+    sequelize: sequelize,
+    Artists: sequelize.import(__dirname + '/models/artists.js')
     // Reviews: sequelize.import(__dirname + '/models/reviews.js')
   }
 
