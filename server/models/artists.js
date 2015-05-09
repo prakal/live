@@ -3,11 +3,11 @@ var Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Artist", {
     tableName: 'artists',
-    artist_id: { 
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
+    // artist_id: { 
+    //   type: Sequelize.INTEGER,
+    //   autoIncrement: true,
+    //   primaryKey: true
+    // },
     artistName: {
       type: DataTypes.STRING,
       unique: true
