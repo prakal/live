@@ -2,7 +2,7 @@ var Sequelize = require('sequelize');
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Review", {
-    tableName: 'reviews',
+    // tableName: 'reviews',
     artistName: DataTypes.STRING,
     username: DataTypes.STRING,
     // review_id: { 
