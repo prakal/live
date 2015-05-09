@@ -2,16 +2,16 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
   
   $scope.review = {};
   $scope.max = 5;
-
+  // hide the header bar 
   liveFactory.toggleHeader();
-
+  
   $scope.review.artistName = liveFactory.artistNameReview;
 
   $scope.goBack = function(){
     liveFactory.toggleHeader();
     $location.path('/artist/' + $scope.review.artistName);
   }
-
+  // post a new review for the artist 
   $scope.postReview = function (){
     return $http({
       method: 'POST',

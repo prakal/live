@@ -21,6 +21,7 @@ app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));
 });
 
+//testing function 
 app.get('/art', function(req, res){
   Artists.findAll({})
   .then(function (artists) {
@@ -29,6 +30,7 @@ app.get('/art', function(req, res){
   });
 });
 
+// get the artist from the Artists table 
 app.get('/artist', function(req, res){
   Artists.find({
     where: { artistName: req.query.artistName }
@@ -38,6 +40,7 @@ app.get('/artist', function(req, res){
   });
 });
 
+//get the all the reviews of the artist from the reviews table 
 app.get('/getreviews', function(req, res){
   Reviews.findAndCountAll({
     where: { artistName: req.query.artistName }
@@ -47,6 +50,7 @@ app.get('/getreviews', function(req, res){
   });
 });
 
+// get the average rating of the artist 
 app.get('/getAvgRating', function(req, res){
   db.query("SELECT AVG(rating) FROM `reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
   .then(function(avgRating) {
@@ -55,6 +59,7 @@ app.get('/getAvgRating', function(req, res){
   });
 });
 
+// add a new artist row to the Artists table 
 app.post('/newartist', function(req, res) {
   Artists
     .build( req.body )
@@ -67,6 +72,7 @@ app.post('/newartist', function(req, res) {
     });
 });
 
+// add a new review entry in the Reviews table
 app.post('/newreview', function(req, res) {
   Reviews
     .build( req.body )
@@ -77,6 +83,9 @@ app.post('/newreview', function(req, res) {
       console.log('error: ', error);
     });
 });
+
+// update the average rating of the artist after 
+//the user add a new review for the artist 
 
 app.post('/updateAvgRating', function(req, res) {
   Artists
