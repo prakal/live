@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Artist", {
     tableName: 'artists',
     artist_id: { 
-      type: DataTypes.INTEGER,
+      type: sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },

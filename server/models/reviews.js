@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     artistName: DataTypes.STRING,
     username: DataTypes.STRING,
     review_id: { 
-      type: DataTypes.INTEGER,
+      type: sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
