@@ -1,8 +1,10 @@
+var Sequelize = require('sequelize');
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Artist", {
     tableName: 'artists',
     artist_id: { 
-      type: sequelize.INTEGER,
+      type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
