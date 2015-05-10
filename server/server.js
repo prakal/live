@@ -28,7 +28,7 @@ db.sequelize.sync().then(function() {
 });
 
 app.get('/art', function(req, res){
-  db.Artists.findAll({})
+  db.Artist.findAll({})
   .then(function (artists) {
     res.status(200).json(artists);
   })
@@ -38,7 +38,7 @@ app.get('/art', function(req, res){
 });
 
 app.get('/artist', function(req, res){
-  db.Artists.find({
+  db.Artist.find({
     where: { artistName: req.query.artistName }
   })
   .then(function (artist) {
@@ -47,7 +47,7 @@ app.get('/artist', function(req, res){
 });
 
 app.get('/getreviews', function(req, res){
-  db.Reviews.findAndCountAll({
+  db.Review.findAndCountAll({
     where: { artistName: req.query.artistName }
   })
   .then(function (review) {
@@ -56,7 +56,7 @@ app.get('/getreviews', function(req, res){
 });
 
 app.get('/getAvgRating', function(req, res){
-  db.sequelize.query("SELECT AVG(rating) FROM `reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
+  db.sequelize.query("SELECT AVG(rating) FROM `Review` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
   .then(function(avgRating) {
     console.log('average rating: ', avgRating);
     res.status(200).json(avgRating);
@@ -64,7 +64,7 @@ app.get('/getAvgRating', function(req, res){
 });
 
 app.post('/newartist', function(req, res) {
-  db.Artists
+  db.Artist
     .build( req.body )
     .save()
     .then(function(body) {
@@ -76,7 +76,7 @@ app.post('/newartist', function(req, res) {
 });
 
 app.post('/newreview', function(req, res) {
-  db.Reviews
+  db.Review
     .build( req.body )
     .save()
     .then(function(body) {
@@ -87,7 +87,7 @@ app.post('/newreview', function(req, res) {
 });
 
 app.post('/updateAvgRating', function(req, res) {
-  db.Artists
+  db.Artist
     .update( {
       avgRating: req.body.avgRating,
       reviewCount: sequelize.literal('reviewCount + 1')
