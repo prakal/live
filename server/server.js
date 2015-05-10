@@ -56,7 +56,7 @@ app.get('/getreviews', function(req, res){
 });
 
 app.get('/getAvgRating', function(req, res){
-  db.sequelize.query("SELECT AVG(rating) FROM `Review` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
+  db.sequelize.query("SELECT AVG(rating) FROM `reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
   .then(function(avgRating) {
     console.log('average rating: ', avgRating);
     res.status(200).json(avgRating);
