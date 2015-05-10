@@ -55,11 +55,19 @@ app.get('/getreviews', function(req, res){
   });
 });
 
+var query = ' \
+  SELECT AVG(rating) FROM "Reviews" \
+  WHERE "artistName" = :artistName \
+';
+
 app.get('/getAvgRating', function(req, res){
-  db.sequelize.query("SELECT AVG(rating) FROM `Reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
+  // db.sequelize.query("SELECT AVG(rating) FROM `Reviews` WHERE artistName = ? ", {replacements: [req.query.artistName], type: sequelize.QueryTypes.SELECT})
+  db.sequelize.query(query, null, {raw: true}, { 
+  artistName: req.query.artistName 
+})
   .then(function(avgRating) {
-    console.log('average rating: ', avgRating);
-    res.status(200).json(avgRating);
+    console.log('average rating: ', avgRating[0]);
+    res.status(200).json(avgRating[0]);
   });
 });
 
