@@ -31,6 +31,9 @@ app.get('/art', function(req, res){
   db.Artists.findAll({})
   .then(function (artists) {
     res.status(200).json(artists);
+  })
+  .catch(function(error) {
+    console.log('error: ', error);
   });
 });
 
