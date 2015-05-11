@@ -7,7 +7,6 @@ function searchResultsCtrl($scope, $location, liveFactory){
   
   $scope.pickArtist = function(item){
     liveFactory.chosenArtist = item;
-    console.log('chosen artist:', liveFactory.chosenArtist);
     liveFactory.pickArtist();
   }
 

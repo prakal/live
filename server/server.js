@@ -5,8 +5,6 @@ var db = require('./config');
 var http = require('http');
 var hstore = require('pg-hstore')();
 var methodOverride = require('method-override');
-// var Artists = require('./models/artists');
-// var Reviews = require('./models/reviews');
 
 var app = express();
 
@@ -105,14 +103,6 @@ var query2 = ' \
 ';
 
 app.post('/updateAvgRating', function(req, res) {
-  // db.Artist
-  //   .update( {
-  //     avgRating: req.body.avgRating,
-  //     reviewcount: sequelize.literal('reviewcount + 1')
-  //   },
-  //   { where: 
-  //     { artistName: req.query.artistName }
-  //   })
   db.sequelize.query(query2, null, {raw: true}, {
     avgrating: req.body.avgrating,
     artistName: req.query.artistName

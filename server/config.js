@@ -18,7 +18,6 @@ if (!global.hasOwnProperty('db')) {
     sequelize = new Sequelize('database', 'username', 'password', {
       host: '127.0.0.1',
       dialect: 'sqlite',
-
       pool: {
         max: 5,
         min: 0,

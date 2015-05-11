@@ -7,8 +7,11 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
 
   $scope.review.artistName = liveFactory.artistNameReview;
 
-  $scope.goBack = function(){
+  $scope.$on('$ionicView.beforeLeave', function(){
     liveFactory.toggleHeader();
+  });
+  
+  $scope.goBack = function(){
     $location.path('/artist/' + $scope.review.artistName);
   }
 
@@ -34,17 +37,14 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     })
     .then(function(resp){
       $scope.obj = {};
-      console.log('response', resp);
       if(resp.data[0]['avg']){
-        console.log('there is avg');
         $scope.obj.avgrating = parseInt(resp.data[0]['avg']);
       }
       else {
-        console.log('there is no avg');
         $scope.obj.avgrating = parseInt(resp.data[0]['AVG(rating)']); 
       }
       $scope.updateAvgRating();
-      console.log('router - avg rating:', $scope.obj);
+      console.log('router - avg rating obj:', $scope.obj);
     });
   };
 
@@ -59,7 +59,6 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     .then(function(resp){
       console.log('router - updated avg rating:', resp.data);
       $location.path('/artist/' + $scope.review.artistName);
-      liveFactory.toggleHeader();
     });
   };
 

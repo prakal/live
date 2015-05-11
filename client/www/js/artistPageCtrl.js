@@ -15,7 +15,6 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     .then(function(resp){  
       $scope.artist = resp.data;
       $scope.roundedRating = Math.round($scope.artist.avgrating);
-      console.log('review count:', $scope.artist);
       $scope.oneReview = function() {
         if($scope.artist.reviewcount === 1){
           return true;
@@ -35,7 +34,6 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     })
     .then(function(resp){
       $scope.reviews = resp.data.rows;
-      // $scope.reviewsCount = resp.data.count;
     })
   };
   
@@ -47,7 +45,6 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
   $scope.toggle = function() {
     $scope.hideText = !$scope.hideText;
   };
-
 
   $scope.$on('$ionicView.enter', function(){
     $scope.hideText = true;

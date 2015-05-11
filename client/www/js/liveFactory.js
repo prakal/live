@@ -5,7 +5,6 @@ function liveFactory($http, $location){
 
   liveFactory.toggleHeader = function(){
     liveFactory.hideMainHeader = !liveFactory.hideMainHeader;
-    console.log('hide main header', liveFactory.hideMainHeader);
   };
 
   liveFactory.getAllArtists = function(){
@@ -19,14 +18,12 @@ function liveFactory($http, $location){
   };
 
   liveFactory.getNewArtist = function(){
-    console.log('liveFactory.artist', liveFactory.artist);
     return $http({
       method: 'GET',
-      url: 'https://api.spotify.com/v1/search?q=' + liveFactory.artist + '&type=artist',
+      url: 'https://api.spotify.com/v1/search?q=' + liveFactory.artist + '&type=artist'
     })
     .then(function(resp){
       liveFactory.results = resp.data.artists;
-      // console.log('liveFactory.results', liveFactory.results);
       if(liveFactory.results.items.length > 0){
         $location.path('/results');
       }
