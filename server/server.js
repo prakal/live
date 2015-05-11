@@ -66,7 +66,7 @@ app.get('/getAvgRating', function(req, res){
   // Use the following code instead.
   // Sequelize gives feedback that the method below has been deprecated, but it is the only way we found to have it work with Postgres.
   db.sequelize.query(query, null, {raw: true}, { 
-  artistName: req.query.artistName;
+  artistName: req.query.artistName
 })
   .then(function(avgRating) {
     console.log('average rating: ', avgRating[0]);
