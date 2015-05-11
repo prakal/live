@@ -68,9 +68,9 @@ app.get('/getAvgRating', function(req, res){
   db.sequelize.query(query, null, {raw: true}, { 
   artistName: req.query.artistName
 })
-  .then(function(avgrating) {
-    console.log('average rating: ', avgrating[0]);
-    res.status(200).json(avgrating[0]);
+  .then(function(avgRating) {
+    console.log('average rating: ', avgRating[0]);
+    res.status(200).json(avgRating[0]);
   });
 });
 
@@ -98,10 +98,10 @@ app.post('/newreview', function(req, res) {
 });
 
 app.post('/updateAvgRating', function(req, res) {
-  console.log('avgrating:', req.body.avgrating);
+  console.log('avgRating', req.body);
   db.Artist
     .update( {
-      avgrating: req.body.avgrating,
+      avgRating: req.body.avgRating,
       reviewcount: sequelize.literal('reviewcount + 1')
     },
     { where: 
