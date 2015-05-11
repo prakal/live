@@ -98,6 +98,7 @@ app.post('/newreview', function(req, res) {
 });
 
 app.post('/updateAvgRating', function(req, res) {
+  console.log('avgRating:', req.body.avgRating);
   db.Artist
     .update( {
       avgRating: req.body.avgRating,
