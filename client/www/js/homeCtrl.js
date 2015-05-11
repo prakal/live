@@ -12,7 +12,7 @@ function homeCtrl($scope, $location, liveFactory){
   
 // check to see if there's only one review 
   $scope.oneReview = function(artist){
-    if(artist.reviewCount === 1){
+    if(artist.reviewcount === 1){
       return true;
     }
   }
