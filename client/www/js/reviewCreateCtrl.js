@@ -35,7 +35,14 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     .then(function(resp){
       $scope.obj = {};
       console.log('response', resp);
-      $scope.obj.avgrating = parseInt(resp.data[0]['avg']);
+      if(resp.data[0]['avg']){
+        console.log('there is avg');
+        $scope.obj.avgrating = parseInt(resp.data[0]['avg']);
+      }
+      else {
+        console.log('there is no avg');
+        $scope.obj.avgrating = parseInt(resp.data[0]['AVG(rating)']); 
+      }
       $scope.updateAvgRating();
       console.log('router - avg rating:', $scope.obj);
     });
