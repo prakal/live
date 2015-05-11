@@ -61,10 +61,13 @@ var query = ' \
 ';
 
 app.get('/getAvgRating', function(req, res){
-  db.sequelize.query("SELECT AVG(rating) FROM `Reviews` WHERE artistName = :artistName ", {replacements: {artistName: req.query.artistName}, type: sequelize.QueryTypes.SELECT})
-  // db.sequelize.query(query, null, {raw: true}, { 
-  // artistName: req.query.artistName 
-// })
+  // db.sequelize.query("SELECT AVG(rating) FROM `Reviews` WHERE artistName = :artistName ", {replacements: {artistName: req.query.artistName}, type: sequelize.QueryTypes.SELECT})
+  // The above line works in SQLite but fails with Postgres.
+  // Use the following code instead.
+  // Sequelize gives feedback that the method below has been deprecated, but it is the only way we found to have it work with Postgres.
+  db.sequelize.query(query, null, {raw: true}, { 
+  artistName: req.query.artistName;
+})
   .then(function(avgRating) {
     console.log('average rating: ', avgRating[0]);
     res.status(200).json(avgRating[0]);
