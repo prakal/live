@@ -23,7 +23,6 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
     })
   };
 
-
   $scope.saveArtist = function (){
     return $http({
       method: 'POST',
