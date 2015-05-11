@@ -19,7 +19,6 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
     })
     .then(function(resp){
       $scope.artist.bio = resp.data.response.biographies[0].text.substring(0, 600) + '...';
-      console.log('artist bio:', $scope.artist.bio);
     })
   };
 
