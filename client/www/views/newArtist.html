@@ -13,19 +13,19 @@
     <div class="changePic" ng-click="showURL = !showURL">
       Change Image
     </div>
-
+    <!-- when user click on submit button, the new artist gets saved to the database-->
     <form ng-submit="saveArtist()" class="newArtistForm">
-      
+      <!-- displays thumb nail of the artist-->
       <label class="item-input item-stacked-label" ng-show="showURL">
         <span class="input-label strong">Image URL</span>
         <input ng-model="artist.artistPic" type="text" placeholder="Add image URL...">
       </label>
-      
+      <!--display genre of the artist -->
       <label class="item-input item-stacked-label">
         <span class="input-label strong">Genre</span>
         <input ng-model="artist.genre" type="text" placeholder="Enter artist's genre...">
       </label>
-      
+      <!-- displays artist bio-->
       <label class="item-input item-stacked-label">
         <span class="input-label strong">Artist Bio</span>
         <textarea ng-model="artist.bio" placeholder="Artist bio..."></textarea>

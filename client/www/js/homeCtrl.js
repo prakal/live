@@ -1,3 +1,4 @@
+//controller for home.html
 function homeCtrl($scope, $location, liveFactory){
   
   $scope.artistPagefromHome = function(path){
@@ -8,7 +9,8 @@ function homeCtrl($scope, $location, liveFactory){
 
   $scope.obj = liveFactory;
   $scope.obj.getAllArtists();
-
+  
+// check to see if there's only one review 
   $scope.oneReview = function(artist){
     if(artist.reviewCount === 1){
       return true;

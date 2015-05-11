@@ -10,7 +10,7 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
     genre: chosenArtist.genres[0]
     // bio: ,
   }
-
+//saves the artist to the database 
   $scope.saveArtist = function (){
     return $http({
       method: 'POST',

@@ -1,3 +1,4 @@
+//controller for the spotify search result
 function searchResultsCtrl($scope, $location, liveFactory){
 
   $scope.searchQuery = liveFactory.artist;

@@ -1,7 +1,8 @@
+<!-- view of Artist page for showing the artist information and the reviews associated with the artist -->
 <ion-view title="home" class="has-header has-subheader">
   <ion-content padding="false" class="artistContainer">
     
-    
+    <!-- displays artist picture,name,genre, average rating-->
     <div class="item-thumbnail-left artistPage item">
       <img ng-src="{{artist.artistPic}}" />
       <h1>{{artist.artistName}}</h1>
@@ -9,10 +10,11 @@
       <div class="reviews">
         <span class="avgRating">{{artist.avgRating | number: 1}}</span>
         <rating readonly="true" ng-model="roundedRating" max="max"></rating>
+        <!-- hides the s when there's only one review-->
         <span>{{ artist.reviewCount }} review<span ng-hide="oneReview()">s</span></span>
       </div>
     </div>
-  
+    <!-- toggle button for showing/hiding artist bio-->
     <div ng-click="toggle()" ng-show="artist.bio" class="aboutArtist">
       <i class="icon ion-music-note"></i>
       About the Artist
@@ -22,7 +24,10 @@
       {{ artist.bio }}
     </div>
 
+   
     <div class="reviewCon">
+      <!--button says leave a review if there are already reviews for the artist, 
+      otherwise it says be the first to review -->
       <button ng-click="writeReview()" class="button button-block  writeReview">
         <span ng-show="reviewsExist()">Leave a Review</span>
         <span ng-hide="reviewsExist()">Be first to review!</span>
@@ -31,6 +36,7 @@
       <div class="reviewsHeader">
         Reviews
       </div>
+      <!-- show the reviews ordered by dated created -->
       <ion-list class="reviews">
         <ion-item ng-repeat="review in reviews | orderBy: '-createdAt' " class="review item-avatar">
           <img src="./assets/hipster.png">
@@ -40,6 +46,7 @@
             <li>{{ review.venue }}</li>
           </ul>
           <div class="reviews">
+            <!-- set readonly to 'true' so users can't change the ratings on this page-->
             <rating readonly="true" ng-model="review.rating" max="max"></rating>
           </div>
           <p>{{review.textReview}}</p>

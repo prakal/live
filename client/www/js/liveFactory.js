@@ -3,11 +3,12 @@ function liveFactory($http, $location){
   var liveFactory = {};
   liveFactory.hideMainHeader = false;
 
+// toggle the header for the write review page 
   liveFactory.toggleHeader = function(){
     liveFactory.hideMainHeader = !liveFactory.hideMainHeader;
     console.log('hide main header', liveFactory.hideMainHeader);
   };
-
+// get all the artists 
   liveFactory.getAllArtists = function(){
     return $http({
       method: 'GET',
@@ -17,7 +18,7 @@ function liveFactory($http, $location){
       liveFactory.artists = resp.data;
     })
   };
-
+// get a new artists that doesn't exist in the database 
   liveFactory.getNewArtist = function(){
     return $http({
       method: 'GET',

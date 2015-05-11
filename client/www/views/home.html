@@ -1,6 +1,9 @@
+<!-- Home page view-->
 <ion-view title="home" class="has-header has-subheader">
   <ion-content padding="false">
     <ion-list class="artistList">
+    
+      <!-- shows the search results of the entered artist name -->
       
       <ion-item ng-repeat="artist in filteredArtists = (obj.artists | orderBy: 'artistName' | filter: q)" class="item item-thumbnail-left" ng-click="artistPagefromHome(artist.artistName)">
           <img ng-src="{{artist.artistPic}}">
@@ -12,6 +15,7 @@
             <span class="numOfReviews">{{artist.reviewCount}} review<span ng-hide="oneReview(artist)">s</span></span>
           </div>
       </ion-item>  
+      <!-- if the artist isn't in our database, ask the user to create the artist page-->
       
       <div ng-show="!filteredArtists.length" class="noResults">
         Sorry, <span class="query">{{ q }}</span> is not in our catalogue.<br>

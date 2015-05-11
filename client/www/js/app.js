@@ -17,16 +17,18 @@ angular.module('liveApp', ['ionic', 'ionic.rating'])
     }
   });
 })
-
+//setting up the states the app can be in
+//each state has an unqique url and controller 
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/')
-
+  
+//home page 
   $stateProvider.state('home', {
     url: '/',
     templateUrl: './views/home.html',
     controller: 'homeCtrl'
   })
-
+// creating a new artist to save to the databse 
   $stateProvider.state('newArtist', {
     url: '/newartist',
     templateUrl: './views/newArtist.html',

@@ -1,9 +1,9 @@
 function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
-  
-  $scope.artistName = $stateParams.artistName;
+  // for using artisName as a query paramter in getArtist() 
+  $scope.artistName = $stateParams.artistName; 
 
   var artistName = $scope.artistName
-
+  // max 5 stars 
   $scope.max = 5;
 
   $scope.getArtist = function(){
@@ -14,6 +14,7 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     })
     .then(function(resp){  
       $scope.artist = resp.data;
+      // 
       $scope.roundedRating = Math.round($scope.artist.avgRating);
       $scope.oneReview = function() {
         if($scope.artist.reviewCount === 1){
@@ -21,14 +22,7 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
         }
       }
       $scope.reviewsExist = function() {
-        return $scope.artist.reviewCount; // if($scope.artist.reviewCount > 0){
-        //   return true;
-        // }
-        // else {
-        //   return false;
-        // }
-
-        // $scope.artist.reviewCount > 0 ? return true : return false;
+        return $scope.artist.reviewCount; 
       }
     })
   };
