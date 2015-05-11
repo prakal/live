@@ -87,6 +87,7 @@ app.post('/newartist', function(req, res) {
 });
 
 app.post('/newreview', function(req, res) {
+  console.log('request for new review:', req)
   db.Review
     .build( req.body )
     .save()
