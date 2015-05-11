@@ -7,7 +7,7 @@
       <h1>{{artist.artistName}}</h1>
       <h2>{{artist.genre}}</h2>
       <div class="reviews">
-        <span class="avgRating">{{artist.avgRating | number: 1}}</span>
+        <span class="avgRating">{{artist.avgrating | number: 1}}</span>
         <rating readonly="true" ng-model="roundedRating" max="max"></rating>
         <span>{{ artist.reviewcount }} review<span ng-hide="oneReview()">s</span></span>
       </div>

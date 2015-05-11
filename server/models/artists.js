@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     artistPic: DataTypes.STRING,
     genre: DataTypes.STRING,
     bio: DataTypes.TEXT,
-    avgRating: DataTypes.INTEGER,
+    avgrating: DataTypes.INTEGER,
     reviewcount: {
       type: DataTypes.INTEGER,
       defaultValue: 0

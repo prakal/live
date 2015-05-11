@@ -99,7 +99,7 @@ app.post('/newreview', function(req, res) {
 
 var query2 = ' \
   UPDATE "Artists" \
-  SET avgRating = :avgRating, \
+  SET avgrating = :avgrating, \
   reviewcount = reviewcount + 1 \
   WHERE "artistName" = :artistName \
 ';
@@ -114,7 +114,7 @@ app.post('/updateAvgRating', function(req, res) {
   //     { artistName: req.query.artistName }
   //   })
   db.sequelize.query(query2, null, {raw: true}, {
-    avgRating: req.body.avgRating,
+    avgrating: req.body.avgrating,
     artistName: req.query.artistName
   })
   .then(function(body) {
