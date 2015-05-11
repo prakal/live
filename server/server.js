@@ -113,6 +113,7 @@ app.post('/updateAvgRating', function(req, res) {
   //   { where: 
   //     { artistName: req.query.artistName }
   //   })
+  console.log('request body', req.body);
   db.sequelize.query(query2, null, {raw: true}, {
     avgrating: req.body.avgrating,
     artistName: req.query.artistName
