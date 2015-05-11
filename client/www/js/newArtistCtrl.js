@@ -15,7 +15,7 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
   $scope.getBio = function(){
     return $http({
       method: 'GET',
-      url: 'http://developer.echonest.com/api/v4/artist/biographies?api_key=B3ZCIXZI6PRDM766O&format=json&name=' + $scope.artist.artistName
+      url: 'https://developer.echonest.com/api/v4/artist/biographies?api_key=B3ZCIXZI6PRDM766O&format=json&name=' + $scope.artist.artistName
     })
     .then(function(resp){
       $scope.artist.bio = resp.data.response.biographies[0].text.substring(0, 600) + '...';
