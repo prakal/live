@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Mark Martinez
+  - __Scrum Master__: Wenqian Guo
+  - __Development Team Members__: Kaivon Afsari, Edoe Cohen
 
 ## Table of Contents
 
