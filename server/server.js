@@ -97,8 +97,14 @@ app.post('/newreview', function(req, res) {
     });
 });
 
+var query2 = ' \
+  UPDATE "Artists" \
+  SET avgRating = :avgRating, \
+  reviewcount = reviewcount + 1 \
+  WHERE "artistName" = :artistName \
+';
+
 app.post('/updateAvgRating', function(req, res) {
-  console.log('req', req.body);
   // db.Artist
   //   .update( {
   //     avgRating: req.body.avgRating,
@@ -107,12 +113,17 @@ app.post('/updateAvgRating', function(req, res) {
   //   { where: 
   //     { artistName: req.query.artistName }
   //   })
-  //   .then(function(body) {
-  //     res.status(201).send(body);
-  //   })
-  //   .catch(function(error) {
-  //     console.log('error: ', error);
-  //   })
+  db.sequelize.query(query2, null, {raw: true}, {
+    avgRating: req.body.avgRating,
+    artistName: req.query.artistName
+  })
+  .then(function(body) {
+    console.log('req', body);
+    res.status(201).send(body);
+  })
+  .catch(function(error) {
+    console.log('error: ', error);
+  })
 })
 
 
