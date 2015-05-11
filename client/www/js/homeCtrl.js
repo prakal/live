@@ -10,7 +10,7 @@ function homeCtrl($scope, $location, liveFactory){
   $scope.obj.getAllArtists();
 
   $scope.oneReview = function(artist){
-    if(artist.reviewCount === 1){
+    if(artist.reviewcount === 1){
       return true;
     }
   }

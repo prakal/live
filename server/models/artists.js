@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     avgRating: DataTypes.INTEGER,
     reviewcount: {
       type: DataTypes.INTEGER,
-      defaultValue: 0    
+      defaultValue: 0
     }
   });
 }

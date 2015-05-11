@@ -9,7 +9,7 @@
           <div class="reviews">
             <span class="avgRating">{{artist.avgRating | number: 1 }}</span>
             <rating readonly="true" ng-model="artist.avgRating" max="max"></rating>
-            <span class="numOfReviews">{{artist.reviewCount}} review<span ng-hide="oneReview(artist)">s</span></span>
+            <span class="numOfReviews">{{artist.reviewcount}} review<span ng-hide="oneReview(artist)">s</span></span>
           </div>
       </ion-item>  
       
