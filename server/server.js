@@ -98,21 +98,21 @@ app.post('/newreview', function(req, res) {
 });
 
 app.post('/updateAvgRating', function(req, res) {
-  console.log('avgRating', req.body);
-  db.Artist
-    .update( {
-      avgRating: req.body.avgRating,
-      reviewcount: sequelize.literal('reviewcount + 1')
-    },
-    { where: 
-      { artistName: req.query.artistName }
-    })
-    .then(function(body) {
-      res.status(201).send(body);
-    })
-    .catch(function(error) {
-      console.log('error: ', error);
-    })
+  console.log('req', req.body);
+  // db.Artist
+  //   .update( {
+  //     avgRating: req.body.avgRating,
+  //     reviewcount: sequelize.literal('reviewcount + 1')
+  //   },
+  //   { where: 
+  //     { artistName: req.query.artistName }
+  //   })
+  //   .then(function(body) {
+  //     res.status(201).send(body);
+  //   })
+  //   .catch(function(error) {
+  //     console.log('error: ', error);
+  //   })
 })
 
 
