@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     genre: DataTypes.STRING,
     bio: DataTypes.TEXT,
     avgRating: DataTypes.INTEGER,
-    reviewCount: {
+    reviewcount: {
       type: DataTypes.INTEGER,
       defaultValue: 0    
     }

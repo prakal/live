@@ -101,7 +101,7 @@ app.post('/updateAvgRating', function(req, res) {
   db.Artist
     .update( {
       avgRating: req.body.avgRating,
-      reviewCount: sequelize.literal('reviewCount + 1')
+      reviewcount: sequelize.literal('reviewcount + 1')
     },
     { where: 
       { artistName: req.query.artistName }
