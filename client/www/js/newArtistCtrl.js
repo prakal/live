@@ -8,9 +8,19 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
       artistName: chosenArtist.name,
       artistPic: chosenArtist.images[2].url,
       genre: chosenArtist.genres[0]
-      // bio: ,
     }
+  $scope.getBio();
   });
+
+  $scope.getBio = function(){
+    return $http({
+      method: 'GET',
+      url: 'https://developer.echonest.com/api/v4/artist/biographies?api_key=B3ZCIXZI6PRDM766O&format=json&name=' + $scope.artist.artistName
+    })
+    .then(function(resp){
+      $scope.artist.bio = resp.data.response.biographies[0].text.substring(0, 600) + '...';
+    })
+  };
 
   $scope.saveArtist = function (){
     return $http({
