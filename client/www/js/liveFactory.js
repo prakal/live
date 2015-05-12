@@ -3,7 +3,7 @@ function liveFactory($http, $location){
   var liveFactory = {};
   liveFactory.hideMainHeader = false;
 
-// in the index.html we are listening to hideMainHeader to hide or show the header 
+// in the index.html we are listening to hideMainHeader to hide or show the header
   liveFactory.toggleHeader = function(){
     liveFactory.hideMainHeader = !liveFactory.hideMainHeader;
   };
@@ -15,11 +15,11 @@ function liveFactory($http, $location){
     })
     .then(function(resp){
       liveFactory.artists = resp.data;
-    })
+    });
   };
 // get an artist's info from Spotify, if there are more than one matching artists from Spotify
 // then we go to the results page to display all the returned artists, otherwise serve a blank
-// new artist form 
+// new artist form
 
   liveFactory.getNewArtist = function(){
     return $http({
@@ -34,12 +34,12 @@ function liveFactory($http, $location){
       else {
         $location.path('/newartist');
       }
-    })
+    });
   };
 //serves up the newartist page, new artist form
   liveFactory.pickArtist = function(){
     $location.path('/newartist');
-  }
+  };
 
   return liveFactory;
 }
