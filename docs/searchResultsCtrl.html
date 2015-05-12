@@ -25,11 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="artistFactory.html">
-                  artistFactory.js
-                </a>
-              
-                
                 <a class="source" href="artistPageCtrl.html">
                   artistPageCtrl.js
                 </a>
@@ -92,11 +87,24 @@
             <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">searchResultsCtrl</span><span class="hljs-params">($scope, $location, liveFactory)</span></span>{
 
   $scope.searchQuery = liveFactory.artist;
-  $scope.searchResults = liveFactory.results.items;
+  $scope.searchResults = liveFactory.results.items;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>This function is invoked when the user choses an artist Spotify result list </p>
 
-  $scope.pickArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item)</span></span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  $scope.pickArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item)</span></span>{
     liveFactory.chosenArtist = item;
-    liveFactory.pickArtist();
+    liveFactory.pickArtist();<span class="hljs-comment">// displays the picked artist page </span>
   }
 }
 

@@ -25,11 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="artistFactory.html">
-                  artistFactory.js
-                </a>
-              
-                
                 <a class="source" href="artistPageCtrl.html">
                   artistPageCtrl.js
                 </a>
@@ -99,7 +94,8 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>for using artisName as a query paramter in getArtist() </p>
+              <p>$stateParams grabs the artistName from the url
+when someone clicks on the artist from the home view </p>
 
             </div>
             
@@ -120,9 +116,23 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  $scope.max = <span class="hljs-number">5</span>;
+            <div class="content"><div class='highlight'><pre>  $scope.max = <span class="hljs-number">5</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Send a GET request that contains artist name as a parameter to /artist
+and returns artist information</p>
 
-  $scope.getArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  $scope.getArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     <span class="hljs-keyword">return</span> $http({
       method: <span class="hljs-string">'GET'</span>,
       url: <span class="hljs-string">'/artist'</span>,
@@ -134,28 +144,75 @@
         </li>
         
         
-        <li id="section-4">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              
+              <p>recalculate the average rating of the artist </p>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre>      $scope.roundedRating = <span class="hljs-built_in">Math</span>.round($scope.artist.avgRating);
-      $scope.oneReview = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+            <div class="content"><div class='highlight'><pre>      $scope.roundedRating = <span class="hljs-built_in">Math</span>.round($scope.artist.avgRating);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>refer to ng-hide in the span tag of the view, checks if there’s only one review
+hides the s from ‘reviews’ if there’s only one review </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      $scope.oneReview = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
         <span class="hljs-keyword">if</span>($scope.artist.reviewCount === <span class="hljs-number">1</span>){
           <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
         }
-      }
-      $scope.reviewsExist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>refer to ng-hide and ng-show inside <button>
+if revivewCount is 0 then show “be first to review!”
+if reviewCOunt is greater than 0 show “leave a review!” </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      $scope.reviewsExist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
         <span class="hljs-keyword">return</span> $scope.artist.reviewCount; 
       }
     })
-  };
+  };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>get reviews of the artist by passing in the artistname as a parameter
+and select the corresponding row from the reviews table, and set the 
+review and reviewsCount variables to be used in the view </p>
 
-  $scope.getReviews = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  $scope.getReviews = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     <span class="hljs-keyword">return</span> $http({
       method: <span class="hljs-string">'GET'</span>,
       url: <span class="hljs-string">'/getreviews'</span>,
@@ -165,19 +222,58 @@
       $scope.reviews = resp.data.rows;
       $scope.reviewsCount = resp.data.count;
     })
-  };
-  
-  $scope.writeReview = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+  };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>serves up the new review page for the artist</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  $scope.writeReview = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     $location.path(<span class="hljs-string">'/newreview'</span>);
     liveFactory.artistNameReview = artistName;
-  }
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>toggle function for artist bio, not yet integrated </p>
 
-  $scope.toggle = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  $scope.toggle = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
     $scope.hideText = !$scope.hideText;
-  };
+  };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>when the view page is loaded, the function invokes the functions within 
+to show the artist info and the reviews associated with the artists</p>
 
-
-  $scope.$on(<span class="hljs-string">'$ionicView.enter'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  $scope.$on(<span class="hljs-string">'$ionicView.enter'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     $scope.hideText = <span class="hljs-literal">true</span>;
     $scope.getArtist();
     $scope.getReviews();

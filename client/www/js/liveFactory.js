@@ -3,12 +3,12 @@ function liveFactory($http, $location){
   var liveFactory = {};
   liveFactory.hideMainHeader = false;
 
-// toggle the header for the write review page 
+// in the index.html we are listening to hideMainHeader to hide or show the header 
   liveFactory.toggleHeader = function(){
     liveFactory.hideMainHeader = !liveFactory.hideMainHeader;
     console.log('hide main header', liveFactory.hideMainHeader);
   };
-// get all the artists 
+// get all the artists from the the artist table and store in liveFactory.artists
   liveFactory.getAllArtists = function(){
     return $http({
       method: 'GET',
@@ -18,7 +18,10 @@ function liveFactory($http, $location){
       liveFactory.artists = resp.data;
     })
   };
-// get a new artists that doesn't exist in the database 
+// get an artist's info from Spotify, if there are more than one matching artists from Spotify
+// then we go to the results page to display all the returned artists, otherwise serve a blank
+// new artist form 
+
   liveFactory.getNewArtist = function(){
     return $http({
       method: 'GET',
@@ -35,7 +38,7 @@ function liveFactory($http, $location){
       }
     })
   };
-
+//serves up the newartist page, new artist form
   liveFactory.pickArtist = function(){
     $location.path('/newartist');
   }

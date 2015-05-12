@@ -4,9 +4,11 @@ function searchResultsCtrl($scope, $location, liveFactory){
   $scope.searchQuery = liveFactory.artist;
   $scope.searchResults = liveFactory.results.items;
 
+
+  //This function is invoked when the user choses an artist Spotify result list 
   $scope.pickArtist = function(item){
     liveFactory.chosenArtist = item;
-    liveFactory.pickArtist();
+    liveFactory.pickArtist();// displays the picked artist page 
   }
 }
 
