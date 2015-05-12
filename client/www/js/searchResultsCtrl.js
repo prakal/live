@@ -6,11 +6,6 @@ function searchResultsCtrl($scope, $location, liveFactory){
     $scope.searchResults = liveFactory.results.items;
   });
 
-
-
-  //This function is invoked when the user choses an artist Spotify result list
-
-
   //This function is invoked when the user choses an artist Spotify result list
   $scope.pickArtist = function(item){
     liveFactory.chosenArtist = item;
