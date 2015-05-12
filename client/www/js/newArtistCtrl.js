@@ -2,6 +2,7 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
  
   $scope.showURL = false;
 
+
   $scope.$on('$ionicView.enter', function(){
     var chosenArtist = liveFactory.chosenArtist;
     $scope.artist = {
@@ -22,6 +23,16 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
     })
   };
 
+/*we are creating a new artist to store the info of the chosenArtist, which is the artist the user choose from the results of the
+spotify api call */
+  $scope.artist = {
+    artistName: chosenArtist.name,
+    artistPic: chosenArtist.images[2].url,
+    genre: chosenArtist.genres[0]
+    // bio: ,
+  }
+//saves the newly created artist object to the Artist table after the user submits the newArtist form 
+
   $scope.saveArtist = function (){
     return $http({
       method: 'POST',
@@ -29,6 +40,7 @@ function newArtistCtrl($scope, $http, $location, liveFactory){
       data: $scope.artist
     })
     .then(function (resp) {
+      //serves up the page for the new artist 
       $location.path('/artist/' + $scope.artist.artistName);
       return resp.data;
       });

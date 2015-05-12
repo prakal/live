@@ -25,11 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="artistFactory.html">
-                  artistFactory.js
-                </a>
-              
-                
                 <a class="source" href="artistPageCtrl.html">
                   artistPageCtrl.js
                 </a>
@@ -93,7 +88,8 @@
   <span class="hljs-keyword">var</span> chosenArtist = liveFactory.chosenArtist;
  
   $scope.showURL = <span class="hljs-literal">false</span>;
-
+<span class="hljs-comment">/*we are creating a new artist to store the info of the chosenArtist, which is the artist the user choose from the results of the
+spotify api call */</span>
   $scope.artist = {
     artistName: chosenArtist.name,
     artistPic: chosenArtist.images[<span class="hljs-number">2</span>].url,
@@ -123,7 +119,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>saves the artist to the database </p>
+              <p>saves the newly created artist object to the Artist table after the user submits the newArtist form </p>
 
             </div>
             
@@ -133,8 +129,22 @@
       url: <span class="hljs-string">'/newartist'</span>,
       data: $scope.artist
     })
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(resp)</span> </span>{
-      $location.path(<span class="hljs-string">'/artist/'</span> + $scope.artist.artistName);
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(resp)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>serves up the page for the new artist </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      $location.path(<span class="hljs-string">'/artist/'</span> + $scope.artist.artistName);
       <span class="hljs-keyword">return</span> resp.data;
       });
   };
