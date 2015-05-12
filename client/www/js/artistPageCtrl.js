@@ -16,12 +16,18 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     })
     .then(function(resp){  
       $scope.artist = resp.data;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/comment
       // recalculate the average rating of the artist 
       $scope.roundedRating = Math.round($scope.artist.avgRating);
       //refer to ng-hide in the span tag of the view, checks if there's only one review
       //hides the s from 'reviews' if there's only one review 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/comment
       $scope.oneReview = function() {
         if($scope.artist.reviewcount === 1){
           return true;
@@ -59,10 +65,15 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     $scope.hideText = !$scope.hideText;
   };
 
+<<<<<<< HEAD
 
 //when the view page is loaded, the function invokes the functions within 
 // to show the artist info and the reviews associated with the artists
 
+=======
+//when the view page is loaded, the function invokes the functions within 
+// to show the artist info and the reviews associated with the artists
+>>>>>>> origin/comment
   $scope.$on('$ionicView.enter', function(){
     $scope.hideText = true;
     $scope.getArtist();

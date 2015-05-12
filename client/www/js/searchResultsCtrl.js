@@ -10,6 +10,8 @@ function searchResultsCtrl($scope, $location, liveFactory){
 
   //This function is invoked when the user choses an artist Spotify result list 
 
+
+  //This function is invoked when the user choses an artist Spotify result list 
   $scope.pickArtist = function(item){
     liveFactory.chosenArtist = item;
     liveFactory.pickArtist();// displays the picked artist page 
