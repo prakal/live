@@ -1,20 +1,20 @@
 function reviewCreateCtrl($scope, $http, $location, liveFactory){
-  
+
   $scope.review = {};
   $scope.max = 5;
-  // hide the header bar by setting the hideHeader to false 
+  // hide the header bar by setting the hideHeader to false
   liveFactory.toggleHeader();
-  
+
   $scope.review.artistName = liveFactory.artistNameReview;
 
   $scope.$on('$ionicView.beforeLeave', function(){
     liveFactory.toggleHeader();
   });
-  
+
   $scope.goBack = function(){
     $location.path('/artist/' + $scope.review.artistName);
-  }
-  // post a new review for the artist 
+  };
+  // post a new review for the artist
   $scope.postReview = function (){
     return $http({
       method: 'POST',
@@ -41,7 +41,7 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
         $scope.obj.avgrating = parseInt(resp.data[0]['avg']);
       }
       else {
-        $scope.obj.avgrating = parseInt(resp.data[0]['AVG(rating)']); 
+        $scope.obj.avgrating = parseInt(resp.data[0]['AVG(rating)']);
       }
       $scope.updateAvgRating();
       console.log('router - avg rating obj:', $scope.obj);

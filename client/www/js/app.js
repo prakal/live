@@ -18,43 +18,43 @@ angular.module('liveApp', ['ionic', 'ionic.rating'])
   });
 })
 //setting up the states the app can be in
-//each state has an unqique url and controller 
+//each state has an unqique url and controller
 .config(function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.otherwise('/')
-  
-//home page 
+  $urlRouterProvider.otherwise('/');
+
+//home page
   $stateProvider.state('home', {
     url: '/',
     templateUrl: './views/home.html',
     controller: 'homeCtrl'
-  })
-// creating a new artist to save to the databse 
+  });
+// creating a new artist to save to the databse
   $stateProvider.state('newArtist', {
     url: '/newartist',
     templateUrl: './views/newArtist.html',
     controller: 'newArtistCtrl'
-  })
+  });
 
   // Search results from calling Spotify API to create a new artist
   $stateProvider.state('searchResults', {
     url: '/results',
     templateUrl: './views/searchResults.html',
     controller: 'searchResultsCtrl'
-  })
-  
+  });
+
   //Route for review creation.
   $stateProvider.state('newReview', {
     url: '/newreview',
     templateUrl: './views/reviewCreate.html',
     controller: 'reviewCreateCtrl'
-  })
+  });
 
   // Artist page
   $stateProvider.state('artistPage', {
     url: '/artist/:artistName',
     templateUrl: './views/artistPage.html',
     controller: 'artistPageCtrl'
-  })
+  });
 
 });
 
