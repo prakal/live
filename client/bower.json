@@ -5,6 +5,6 @@
     "ionic": "driftyco/ionic-bower#1.0.0-rc.5"
   },
   "dependencies": {
-    "ionic-rating": "~0.1.0",
+    "ionic-rating": "~0.1.0"
   }
 }
