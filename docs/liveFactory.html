@@ -25,11 +25,6 @@
                 </a>
               
                 
-                <a class="source" href="artistFactory.html">
-                  artistFactory.js
-                </a>
-              
-                
                 <a class="source" href="artistPageCtrl.html">
                   artistPageCtrl.js
                 </a>
@@ -102,7 +97,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>toggle the header for the write review page </p>
+              <p>in the index.html we are listening to hideMainHeader to hide or show the header </p>
 
             </div>
             
@@ -120,7 +115,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>get all the artists </p>
+              <p>get all the artists from the the artist table and store in liveFactory.artists</p>
 
             </div>
             
@@ -143,11 +138,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>get a new artists that doesn’t exist in the database </p>
+              <p>get an artist’s info from Spotify, if there are more than one matching artists from Spotify
+then we go to the results page to display all the returned artists, otherwise serve a blank
+new artist form </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  liveFactory.getNewArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            <div class="content"><div class='highlight'><pre>
+  liveFactory.getNewArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     <span class="hljs-keyword">return</span> $http({
       method: <span class="hljs-string">'GET'</span>,
       url: <span class="hljs-string">'https://api.spotify.com/v1/search?q='</span> + liveFactory.artist + <span class="hljs-string">'&amp;type=artist'</span>,
@@ -162,9 +160,22 @@
         $location.path(<span class="hljs-string">'/newartist'</span>);
       }
     })
-  };
+  };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>serves up the newartist page, new artist form</p>
 
-  liveFactory.pickArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  liveFactory.pickArtist = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
     $location.path(<span class="hljs-string">'/newartist'</span>);
   }
 

@@ -2,7 +2,7 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
   
   $scope.review = {};
   $scope.max = 5;
-  // hide the header bar 
+  // hide the header bar by setting the hideHeader to false 
   liveFactory.toggleHeader();
   
   $scope.review.artistName = liveFactory.artistNameReview;
