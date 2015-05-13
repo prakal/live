@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/greenfieldproject-live/2015-03-greenfield#readme",
   "dependencies": {
+    "aws-sdk": "^2.1.27",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.5.2",
     "express": "^4.0.0",
