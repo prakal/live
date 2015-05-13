@@ -1,7 +1,7 @@
 <!-- view of Artist page for showing the artist information and the reviews associated with the artist -->
 <ion-view title="home" class="has-header has-subheader">
   <ion-content padding="false" class="artistContainer">
-    
+
     <!-- displays artist picture,name,genre, average rating-->
     <div class="item-thumbnail-left artistPage item">
       <img ng-src="{{artist.artistPic}}" />
@@ -24,13 +24,17 @@
       {{ artist.bio }}
     </div>
 
-   
+
     <div class="reviewCon">
-      <!--button says leave a review if there are already reviews for the artist, 
+      <!--button says leave a review if there are already reviews for the artist,
       otherwise it says be the first to review -->
       <button ng-click="writeReview()" class="button button-block  writeReview">
         <span ng-show="reviewsExist()">Leave a Review</span>
         <span ng-hide="reviewsExist()">Be first to review!</span>
+      </button>
+      <button ng-click="recordVideo()" class="button button-block  writeReview">
+        <span ng-show="reviewsExist()">Record a video</span>
+        <span ng-hide="reviewsExist()">Submit the first live recording!</span>
       </button>
 
       <div class="reviewsHeader">
@@ -51,7 +55,7 @@
           </div>
           <p>{{review.textReview}}</p>
         </ion-item>
-       
+
       </ion-list>
 
     </div>
