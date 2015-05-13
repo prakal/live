@@ -50,11 +50,14 @@
           </form>
           <button class="button button-icon icon ion-navicon"></button>
         </div>
+        <input type="file" accept="video/*" capture>
+        
+        <button class="button button-icon icon ion-navicon"></button>
       </ion-header-bar>
 
       <!-- SEARCH SUB-HEADER -->
       <ion-header-bar class="bar-dark bar-subheader item-input-inset" ng-hide="obj.hideMainHeader">
-      
+
         <label class="item-input-wrapper search-artist">
           <i class="icon ion-ios-search placeholder-icon"></i>
           <form ng-submit="artistsSearch()">
