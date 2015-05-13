@@ -36,8 +36,8 @@
         <span ng-show="reviewsExist()">Record a video</span>
         <span ng-hide="reviewsExist()">Submit the first live recording!</span>
       </button>
-        <input type="file" accept="video/*;capture=camcorder">
-
+        <input ng-model="movie" type="file" accept="video/*;capture=camcorder">
+        <video>{{movie}}</video>
       <div class="reviewsHeader">
         Reviews
       </div>
