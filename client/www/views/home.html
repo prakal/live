@@ -1,4 +1,5 @@
 <!-- Home page view-->
+
 <ion-view title="home" class="has-header has-subheader">
 
   <ion-content padding="false">
@@ -17,7 +18,6 @@
           </div>
       </ion-item>  
       <!-- if the artist isn't in our database, ask the user to create the artist page-->
-        <input type="file" accept="video/*" capture>
       
       <div ng-show="!filteredArtists.length" class="noResults">
         Sorry, <span class="query">{{ q }}</span> is not in our catalogue.<br>
@@ -26,5 +26,7 @@
         </button>
       </div>
     </ion-list>
+        <input type="file" accept="video/*" capture>
+    
   </ion-content>
 </ion-view>
