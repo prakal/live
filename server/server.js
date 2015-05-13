@@ -15,6 +15,7 @@ app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/../client/www'));
 app.use(favicon(__dirname + '/favicon.ico'));
 
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
@@ -27,7 +28,7 @@ db.sequelize.sync().then(function() {
   });
 });
 
-//testing function 
+//testing function
 app.get('/art', function(req, res){
   db.Artist.findAll({})
   .then(function (artists) {
@@ -38,7 +39,7 @@ app.get('/art', function(req, res){
   });
 });
 
-// get the artist from the Artists table 
+// get the artist from the Artists table
 app.get('/artist', function(req, res){
   db.Artist.find({
     where: { artistName: req.query.artistName }
@@ -48,7 +49,7 @@ app.get('/artist', function(req, res){
   });
 });
 
-//get the all the reviews of the artist from the reviews table 
+//get the all the reviews of the artist from the reviews table
 app.get('/getreviews', function(req, res){
   db.Review.findAndCountAll({
     where: { artistName: req.query.artistName }
@@ -58,7 +59,7 @@ app.get('/getreviews', function(req, res){
   });
 });
 
-// get the average rating of the artist 
+// get the average rating of the artist
 var query = ' \
   SELECT AVG(rating) FROM "Reviews" \
   WHERE "artistName" = :artistName \
@@ -69,7 +70,7 @@ app.get('/getAvgRating', function(req, res){
   // The above line works in SQLite but fails with Postgres.
   // Use the following code instead.
   // Sequelize gives feedback that the method below has been deprecated, but it is the only way we found to have it work with Postgres.
-  db.sequelize.query(query, null, {raw: true}, { 
+  db.sequelize.query(query, null, {raw: true}, {
   artistName: req.query.artistName
 })
   .then(function(avgrating) {
@@ -78,7 +79,7 @@ app.get('/getAvgRating', function(req, res){
   });
 });
 
-// add a new artist row to the Artists table 
+// add a new artist row to the Artists table
 app.post('/newartist', function(req, res) {
   db.Artist
     .build( req.body )
@@ -104,8 +105,8 @@ app.post('/newreview', function(req, res) {
 });
 
 
-// update the average rating of the artist after 
-//the user add a new review for the artist 
+// update the average rating of the artist after
+//the user add a new review for the artist
 var query2 = ' \
   UPDATE "Artists" \
   SET avgrating = :avgrating, \
