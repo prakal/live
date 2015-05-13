@@ -102,7 +102,7 @@
           };
           xhr.send();
       }
-      
+
       function upload_file(file, signed_request, url){
           var xhr = new XMLHttpRequest();
           xhr.open("PUT", signed_request);
@@ -117,7 +117,14 @@
               alert("Could not upload file."); 
           };
           xhr.send(file);
-      }
+      };
+      /*
+         Bind listeners when the page loads.
+      */
+      (function() {
+          document.getElementById("media-capture").onchange = init_upload;
+      })();
+
     </script>
   </body>
 </html>

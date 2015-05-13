@@ -163,6 +163,7 @@ app.get('/sign_s3', function(req, res){
                 signed_request: data,
                 url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name 
             };
+            console.log('return_data',return_data.url);
             res.write(JSON.stringify(return_data));
             res.end();
         } 
