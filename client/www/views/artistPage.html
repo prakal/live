@@ -1,7 +1,7 @@
 <!-- view of Artist page for showing the artist information and the reviews associated with the artist -->
 <ion-view title="home" class="has-header has-subheader">
   <ion-content padding="false" class="artistContainer">
-    
+
     <!-- displays artist picture,name,genre, average rating-->
     <div class="item-thumbnail-left artistPage item">
       <img ng-src="{{artist.artistPic}}" />
@@ -24,13 +24,17 @@
       {{ artist.bio }}
     </div>
 
-   
+
     <div class="reviewCon">
-      <!--button says leave a review if there are already reviews for the artist, 
+      <!--button says leave a review if there are already reviews for the artist,
       otherwise it says be the first to review -->
       <button ng-click="writeReview()" class="button button-block  writeReview">
         <span ng-show="reviewsExist()">Leave a Review</span>
         <span ng-hide="reviewsExist()">Be first to review!</span>
+      </button>
+      <button ng-click="recordVideo()" class="button button-block  writeReview">
+        <span ng-show="reviewsExist()">Record a video</span>
+        <span ng-hide="reviewsExist()">Submit the first live recording!</span>
       </button>
 
       <div class="reviewsHeader">
@@ -40,18 +44,37 @@
       <ion-list class="reviews">
         <ion-item ng-repeat="review in reviews | orderBy: '-createdAt' " class="review item-avatar">
           <img src="./assets/hipster.png">
-          <h1>{{review.username}}</h1>
-          <ul class="details">
-            <li>{{ review.createdAt | date: 'shortDate' }}</li>
-            <li>{{ review.venue }}</li>
-          </ul>
-          <div class="reviews">
-            <!-- set readonly to 'true' so users can't change the ratings on this page-->
-            <rating readonly="true" ng-model="review.rating" max="max"></rating>
+          <div class="row">
+            <div class="col">
+              <h1>{{review.username}}</h1>
+              <ul class="details">
+                <li>{{ review.createdAt | date: 'shortDate' }}</li>
+                <li>{{ review.venue }}</li>
+              </ul>
+              <div class="reviews">
+                <!-- set readonly to 'true' so users can't change the ratings on this page-->
+                <rating readonly="true" ng-model="review.rating" max="max"></rating>
+              </div>
+              <p>{{review.textReview}}</p>
+            </div>
+            <div class="col">
+                <!--
+                  <video width="32" height="24" poster="./assets/hipster.png" controls>
+                  <iframe src="https://www.youtube.com/embed/gvI2ClWqHO0" frameborder="0" width="96" height="64"></iframe>
+                  <iframe src="./assets/movie.mp4" frameborder="0" width="96" height="64"></iframe>
+                <iframe src="https://hr26live.s3.amazonaws.com/small.mp4" frameborder="0" width="96" height="64" autoplay="0" autostart="0"></iframe>
+                -->
+              <div class="video-container">
+                <video ng-click="playVideo(review, $event)" width="96" height="64" controls>
+                  <source src="./assets/movie.mp4" type="video/mp4">
+                  <source src="movie.ogg" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
           </div>
-          <p>{{review.textReview}}</p>
         </ion-item>
-       
+
       </ion-list>
 
     </div>

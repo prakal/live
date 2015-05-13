@@ -4,6 +4,8 @@ module.exports = function(sequelize, DataTypes) {
     username: DataTypes.STRING,
     venue: DataTypes.STRING,
     rating: DataTypes.INTEGER,
-    textReview: DataTypes.TEXT
+    textReview: DataTypes.TEXT,
+    videoURL: DataTypes.TEXT
   });
-}
+};
+

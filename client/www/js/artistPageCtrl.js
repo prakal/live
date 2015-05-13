@@ -1,4 +1,4 @@
-function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
+function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory, $cordovaCapture){
   // $stateParams grabs the artistName from the url
   // when someone clicks on the artist from the home view
   $scope.artistName = $stateParams.artistName;
@@ -59,6 +59,21 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     $scope.hideText = !$scope.hideText;
   };
 
+  $scope.playVideo = function(review, event){
+    console.log('clicked');
+  };
+
+  $scope.recordVideo = function(){
+    var options = {limit: 1, duration: 30};
+
+    $cordovaCapture.captureVideo(options)
+      .then(function(videoData) {
+        //sucess
+        console.log('video recorded');
+      }, function(err) {
+        //err
+      });
+  };
 
 //when the view page is loaded, the function invokes the functions within
 // to show the artist info and the reviews associated with the artists
@@ -67,6 +82,7 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory){
     $scope.getArtist();
     $scope.getReviews();
   });
+
 
 }
 
