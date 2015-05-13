@@ -6,7 +6,7 @@ var http = require('http');
 var hstore = require('pg-hstore')();
 var methodOverride = require('method-override');
 var favicon      = require('serve-favicon');
-
+var aws = require('aws-sdk');
 var app = express();
 /*
  * Load the S3 information from the environment variables.
