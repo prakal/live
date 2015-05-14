@@ -8,6 +8,8 @@ var methodOverride = require('method-override');
 // var favicon      = require('serve-favicon');
 var aws = require('aws-sdk');
 var app = express();
+var uuid = require('uuid');
+
 /*
  * Load the S3 information from the environment variables.
  */
@@ -145,6 +147,7 @@ app.post('/updateAvgRating', function(req, res) {
  * anticipated URL of the image.
  */
 app.get('/sign_s3', function(req, res){
+    console.log(uuid.v1());
     aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
     var s3 = new aws.S3(); 
     var s3_params = { 
