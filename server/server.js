@@ -5,7 +5,7 @@ var db = require('./config');
 var http = require('http');
 var hstore = require('pg-hstore')();
 var methodOverride = require('method-override');
-var favicon      = require('serve-favicon');
+// var favicon      = require('serve-favicon');
 var aws = require('aws-sdk');
 var app = express();
 /*
@@ -19,7 +19,7 @@ app.set('views', '../client/www');
 app.set('view engine', 'jade');
 
 app.use(express.static(__dirname + '/../client/www'));
-app.use(favicon(__dirname + '/favicon.ico'));
+// app.use(favicon(__dirname + '/favicon.ico'));
 
 
 app.use(bodyParser.urlencoded({extended: true}));
