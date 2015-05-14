@@ -64,6 +64,36 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory, $co
   };
 
   $scope.recordVideo = function(){
+    console.log('record video');
+    //window.addEventListener('DOMContentLoaded', function() {
+      var v = document.getElementById('v');
+      navigator.getUserMedia = (navigator.getUserMedia || 
+        navigator.webkitGetUserMedia || 
+        navigator.mozGetUserMedia || 
+        navigator.msGetUserMedia);
+      if (navigator.getUserMedia) {
+        // Request access to video only
+        navigator.getUserMedia(
+          {
+            video:true,
+            audio:false
+          },        
+          function(stream) {
+            var url = window.URL || window.webkitURL;
+            v.src = url ? url.createObjectURL(stream) : stream;
+            v.play();
+          },
+          function(error) {
+            alert('Something went wrong. (error code ' + error.code + ')');
+              return;
+            }
+        );
+      }
+      else {
+        alert('Sorry, the browser you are using doesn\'t support getUserMedia');
+        return;
+      }
+    //});
   };
 
 //when the view page is loaded, the function invokes the functions within
