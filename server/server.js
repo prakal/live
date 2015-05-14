@@ -148,11 +148,15 @@ app.post('/updateAvgRating', function(req, res) {
  */
 app.get('/sign_s3', function(req, res){
     var uniqueFileName = uuid.v1();
+    // regex to get everything after the dot, and a dot before it.
+    // this enables us to get the filetype of the original video.
+    var fileType = req.query.file_name.match(/[\.][^.]*$/)[0];
+    console.log('the filetype is',req.query.file_type);
     aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
-    var s3 = new aws.S3(); 
+    var s3 = new aws.S3();
     var s3_params = { 
         Bucket: S3_BUCKET, 
-        Key: uniqueFileName,
+        Key: uniqueFileName+fileType,
         Expires: 60, 
         ContentType: req.query.file_type, 
         ACL: 'public-read'
@@ -164,7 +168,7 @@ app.get('/sign_s3', function(req, res){
         else{ 
             var return_data = {
                 signed_request: data,
-                url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+uniqueFileName 
+                url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+uniqueFileName+fileType
             };
             console.log('return_data',return_data.url);
             res.write(JSON.stringify(return_data));
