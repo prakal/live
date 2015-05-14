@@ -30,7 +30,7 @@
     <script src="js/newArtistCtrl.js"></script>
     <script src="js/searchResultsCtrl.js"></script>
     <script src="js/artistPageCtrl.js"></script>
-    
+
   </head>
   <body ng-app="liveApp" ng-controller="mainCtrl">
 
@@ -78,6 +78,8 @@
               alert("No file selected.");
               return;
           }
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "/sign_s3?file_name="+file.name+"&file_type="+file.type);
           get_signed_request(file);
       }
 
