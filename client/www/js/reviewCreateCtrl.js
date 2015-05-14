@@ -62,6 +62,34 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     });
   };
 
+
+  $scope.toggle = {};
+  $scope.toggle.recordOrSave = "Record";
+
+  $scope.toggleRecordOrSave = function() {
+    $scope.toggle.recordOrSave = $scope.toggle.recordOrSave === "Record" ? "Save" : "Record";
+  };
+
+  $scope.recordOrSave = function() {
+    if ($scope.toggle.recordOrSave === "record") {
+      $scope.recordVideo();
+    } else {
+      $scope.saveVideo();
+    }
+  }
+
+  $scope.recordVideo = function(){
+    console.log('record video');
+    //angular.element("#captureVideo").trigger('click');
+    $(".reviewVideoCapture").trigger('click');
+  };
+
+  $scope.saveVideo = function(){
+    console.log('record video');
+    //angular.element("#captureVideo").trigger('click');
+    $(".reviewVideoCapture").trigger('click');
+  };
+
 }
 
 angular.module('liveApp')

@@ -63,12 +63,6 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory, $co
     console.log('clicked');
   };
 
-  $scope.recordVideo = function(){
-    console.log('record video');
-    //angular.element("#captureVideo").trigger('click');
-    $("#videoCapture").trigger('click');
-  };
-
 //when the view page is loaded, the function invokes the functions within
 // to show the artist info and the reviews associated with the artists
   $scope.$on('$ionicView.enter', function(){

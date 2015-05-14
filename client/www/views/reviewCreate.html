@@ -24,6 +24,25 @@
           <label class="item item-input">
             <input ng-model="review.venue" type="text" placeholder="Venue?">
           </label>
+          <div class="row">
+            <div class="col">
+
+              <button class="button button-block" ng-click="recordOrSave()" ng-model="toggle.recordOrSave"> {{toggle.recordOrSave}}
+              </button>
+
+              <!-- <form ng-hide="true" action="upload.htm" method="post" enctype="multipart/form-data">
+                <input ng-hide="true" class="reviewVideoCapture" placeholder="Record a Video" ng-model="movie" ng-change="toggleRecordOrSave()" type="file" accept="video/*;capture=camcorder"/>
+                <input class="button button-block" type="submit" value="Upload">
+              </form> -->
+            </div>
+            <div class="col">
+
+              <button class="button button-block">Upload
+    <!--           <input ng-model="review.venue" type="text" placeholder="Record">
+     -->      </button>
+
+            </div>
+          </div>
           <label class="item item-input reviewText">
             <textarea ng-model="review.textReview" placeholder="How was the performance?"></textarea>
           </label>

@@ -6,21 +6,25 @@
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
     <link href="css/style.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
+    <script src="lib/jquery/dist/jquery.min.js"></script>
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-rating/ionic-rating.js"></script>
+    <script src="lib/ionic-rating/ionic-rating.js"></script>
+
 
     <!-- cordova script (this will be a 404 during development) -->
     <!--<script src="cordova.js"></script>-->
 
     <!-- your app's js -->
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="js/app.js"></script>
     <script src="js/reviewCreateCtrl.js"></script>
     <script src="js/liveFactory.js"></script>
@@ -39,7 +43,14 @@
 
       <ion-header-bar align-title="left" class="bar-dark bar-header mainHeader" ng-hide="obj.hideMainHeader">
         <div class="title" ng-click="goHome()"></div>
-        <button class="button button-icon icon ion-navicon"></button>
+        <div class="buttons">
+          <i ng-click="recordVideo()" class="icon ion-videocamera"></i>
+          <form ng-hide="true" action="upload.htm" method="post" enctype="multipart/form-data">
+            <input ng-hide="true" id="videoCapture" placeholder="Record a Video" ng-model="movie" type="file" accept="video/*;capture=camcorder"/>
+            <input class="button button-block" type="submit" value="Upload">
+          </form>
+          <button class="button button-icon icon ion-navicon"></button>
+        </div>
       </ion-header-bar>
 
       <!-- SEARCH SUB-HEADER -->
