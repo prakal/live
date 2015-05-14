@@ -64,15 +64,9 @@ function artistPageCtrl($scope, $http, $location, $stateParams, liveFactory, $co
   };
 
   $scope.recordVideo = function(){
-    var options = {limit: 1, duration: 30};
-
-    $cordovaCapture.captureVideo(options)
-      .then(function(videoData) {
-        //sucess
-        console.log('video recorded');
-      }, function(err) {
-        //err
-      });
+    console.log('record video');
+    //angular.element("#captureVideo").trigger('click');
+    $("#videoCapture").trigger('click');
   };
 
 //when the view page is loaded, the function invokes the functions within

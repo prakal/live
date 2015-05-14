@@ -36,7 +36,10 @@
         <span ng-show="reviewsExist()">Record a video</span>
         <span ng-hide="reviewsExist()">Submit the first live recording!</span>
       </button>
-
+      <form ng-hide="true" action="upload.htm" method="post" enctype="multipart/form-data">
+        <input ng-hide="true" id="videoCapture" placeholder="Record a Video" ng-model="movie" type="file" accept="video/*;capture=camcorder"/>
+        <input class="button button-block" type="submit" value="Upload">
+      </form>
       <div class="reviewsHeader">
         Reviews
       </div>
@@ -66,7 +69,8 @@
                 -->
               <div class="video-container">
                 <video ng-click="playVideo(review, $event)" width="96" height="64" controls>
-                  <source src="./assets/movie.mp4" type="video/mp4">
+                  <source src="https://s3-us-west-1.amazonaws.com/hr26live/capturedvideo.mov" type="video/mov">
+                  <!--<source src="./assets/movie.mp4" type="video/mp4">-->
                   <source src="movie.ogg" type="video/ogg">
                     Your browser does not support the video tag.
                 </video>
