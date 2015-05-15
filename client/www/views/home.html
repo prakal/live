@@ -19,13 +19,13 @@
       </ion-item>
       <!-- if the artist isn't in our database, ask the user to create the artist page-->
 
-      <div ng-show="showSearch" class="noResults">
+      <div ng-show="!filteredArtists.length" class="noResults">
         Sorry, <span class="query">{{ q }}</span> is not in our catalogue.<br>
         <button ng-click="obj.getNewArtist()" class="button button-block button-positive">
           Create <span class="query">{{ q }}</span>'s artist page now!
         </button>
       </div>
     </ion-list>
-    
+
   </ion-content>
 </ion-view>
