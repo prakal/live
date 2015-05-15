@@ -10,6 +10,7 @@ var aws = require('aws-sdk');
 var app = express();
 var uuid = require('uuid');
 var multer = require('multer');
+
 /*
  * Load the S3 information from the environment variables.
  */
@@ -27,6 +28,8 @@ app.use(express.static(__dirname + '/../client/www'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
+
+var done = false;
 
 /**
  * multer will receive files you POST to the backend and put them in an uploads folder
@@ -70,7 +73,8 @@ function uploadAmazon(originalName, data) {
 // Once multer is done uploading file to uploads folder, it'll end the response with 'File uploaded'
 
 app.post('/api/photo',function(req,res){
-  if (done===true) {
+  if (done === true) {
+    done = false;
     console.log(req.files);
     res.end("File uploaded.");
   }
