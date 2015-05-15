@@ -67,6 +67,8 @@ function uploadAmazon(originalName, data) {
   });
 }
 
+// Once multer is done uploading file to uploads folder, it'll end the response with 'File uploaded'
+
 app.post('/api/photo',function(req,res){
   if (done===true) {
     console.log(req.files);
