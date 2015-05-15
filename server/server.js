@@ -5,15 +5,23 @@ var db = require('./config');
 var http = require('http');
 var hstore = require('pg-hstore')();
 var methodOverride = require('method-override');
-var favicon      = require('serve-favicon');
-
+// var favicon      = require('serve-favicon');
+var aws = require('aws-sdk');
 var app = express();
+var uuid = require('uuid');
+var ffmpeg = require('fluent-ffmpeg');
+/*
+ * Load the S3 information from the environment variables.
+ */
+var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+var S3_BUCKET = process.env.S3_BUCKET
 
 app.set('views', '../client/www');
 app.set('view engine', 'jade');
 
 app.use(express.static(__dirname + '/../client/www'));
-app.use(favicon(__dirname + '/favicon.ico'));
+// app.use(favicon(__dirname + '/favicon.ico'));
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -130,6 +138,44 @@ app.post('/updateAvgRating', function(req, res) {
   .catch(function(error) {
     console.log('error: ', error);
   })
-})
+});
+
+
+/*
+ * Respond to GET requests to /sign_s3.
+ * Upon request, return JSON containing the temporarily-signed S3 request and the
+ * anticipated URL of the image.
+ */
+app.get('/sign_s3', function(req, res){
+    var uniqueFileName = uuid.v1();
+    // regex to get everything after the dot, and a dot before it.
+    // this enables us to get the filetype of the original video.
+    var fileType = req.query.file_name.match(/[\.][^.]*$/)[0];
+    console.log('the filetype is',req.query.file_type);
+    aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
+    var s3 = new aws.S3();
+    var s3_params = { 
+        Bucket: S3_BUCKET, 
+        Key: uniqueFileName+fileType,
+        Expires: 60, 
+        ContentType: req.query.file_type, 
+        ACL: 'public-read'
+    }; 
+    s3.getSignedUrl('putObject', s3_params, function(err, data){ 
+        if(err){ 
+            console.log(err); 
+        }
+        else{ 
+            var return_data = {
+                signed_request: data,
+                url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+uniqueFileName+fileType
+            };
+            console.log('return_data',return_data.url);
+            res.write(JSON.stringify(return_data));
+            res.end();
+        } 
+    });
+});
+
 
 
