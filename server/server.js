@@ -66,6 +66,14 @@ function uploadAmazon(originalName, data) {
       console.log(err);
     } else {
       console.log("Successfully uploaded info to bucket URL is https://hr26livetranscode.s3.amazonaws.com/"+uniqueName+".mp4");
+      var queryString = '\
+        UPDATE "Reviews" \
+        SET videoURL = https://hr26livetranscode.s3.amazonaws.com/"'+uniqueName+'".mp4", \
+        WHERE "artistName" = :artistName';
+      db.sequelize.query(queryString,null,{raw:true})
+        .then(function(){
+          console.log('videoURL added to S3');
+        })
     }
   });
 }
